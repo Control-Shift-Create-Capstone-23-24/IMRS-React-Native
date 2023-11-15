@@ -7,9 +7,9 @@ export default function _layout() {
     <Stack
      screenOptions={{
         headerStyle: {
-            backgroundColor: 'white'
+            backgroundColor: 'black'
         },
-        headerTintColor: 'blue'
+        headerTintColor: 'red'
      }}
      >
         <Stack.Screen name="index" options={{
@@ -25,6 +25,9 @@ export default function _layout() {
             title: 'Login Modal',
             presentation: 'modal' 
         }} />
+        <Stack.Screen name="map" options={{
+            title: 'IMRS'
+        }}/>
         <Stack.Screen name="[missing]" options={{
             title: '404' 
         }} />

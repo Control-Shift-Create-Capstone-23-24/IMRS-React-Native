@@ -6,7 +6,7 @@ export default function Register() {
   return (
     <View>
      <Text>Register</Text>
-     <Link href='/login' asChild>
+     <Link href='/register/login' asChild>
         <Button title='open login modal' />
      </Link>
     </View>
