@@ -18,7 +18,7 @@ export default function _layout() {
         <Stack.Screen name="register/index" options={{
             title: 'Register',
             headerRight: () =>(
-                <Button title='Login' onPress={()=>{}} />
+                <Button title='Register' onPress={()=>{}} />
             )
         }} />
         <Stack.Screen name="register/login" options={{
