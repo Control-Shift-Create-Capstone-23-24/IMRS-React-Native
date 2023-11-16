@@ -25,7 +25,7 @@ export default function _layout() {
             title: 'Login Modal',
             presentation: 'modal' 
         }} />
-        <Stack.Screen name="map" options={{
+        <Stack.Screen name="heatmap" options={{
             title: 'IMRS'
         }}/>
         <Stack.Screen name="[missing]" options={{
