@@ -1,5 +1,5 @@
-import {Button, Text, View, StyleSheet} from "react-native";
-import {Link} from "expo-router";
+import { Button, Text, View, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 import React from "react";
 import MapView from "react-native-maps";
 
