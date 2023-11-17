@@ -2,6 +2,7 @@ import { View, Text, Button, StyleSheet } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 import Container from "@react-navigation/native-stack/src/views/DebugContainer";
+import IMRS_Button from "../components/IMRS_button";
 
 export default function Start() {
     return (
@@ -13,11 +14,11 @@ export default function Start() {
                 <Text style={styles.title}>IMRS</Text>
             </View>
             <View style={styles.MiddleView}>
-                <Link href='/login' asChild>
-                    <Button title='login' />
+                <Link href={'/login'} asChild>
+                    <IMRS_Button title={'login'}/>
                 </Link>
-                <Link href='/register' asChild>
-                    <Button title='Register' />
+                <Link href={'/register'} asChild>
+                    <IMRS_Button title={'register'}/>
                 </Link>
             </View>
             <View style={styles.BottomView}>
