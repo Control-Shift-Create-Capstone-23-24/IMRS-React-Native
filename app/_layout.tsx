@@ -9,7 +9,7 @@ export default function _layout() {
                 headerStyle: {
                     backgroundColor: 'black'
                 },
-                headerTintColor: 'red'
+                headerTintColor: '#FF5733'//red orange
             }}
         >
             <Stack.Screen name="index" options={{

@@ -9,7 +9,7 @@ interface Props {
 const IMRS_Button = (Props) => {
     const {title, backgroundColor, onPress, color, width, height, margin} = Props
     return (
-        <TouchableOpacity onPress={onPress} style={{...styles.container, width, height, margin}}>
+        <TouchableOpacity onPress={onPress} style={{...styles.container, width, height, margin, backgroundColor}}>
             <Text style={{...styles.text, color}}>{title}</Text>
         </TouchableOpacity>
     )
@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 20,
         borderWidth: 2,
-        shadowColor: "black",
-        shadowOffset: {
-            width: -10,
-            height: 10
-        },
-        shadowOpacity: 2.28,
-        shadowRadius: 15.25,
+        // shadowColor: "red",
+        // shadowOffset: {
+        //     width: -10,
+        //     height: 10
+        // },
+        // shadowOpacity: 2.28,
+        // shadowRadius: 15.25,
         elevation: 22,
     },
     text: {

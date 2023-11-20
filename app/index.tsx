@@ -3,22 +3,23 @@ import React from 'react'
 import { Link } from 'expo-router'
 import Container from "@react-navigation/native-stack/src/views/DebugContainer";
 import IMRS_Button from "../components/IMRS_button";
+import ColorsOp from '../components/ColorsOp'
 
 export default function Start() {
     return (
         <View style={styles.container}>
-            <View>
-                <Text style={styles.topText}>Incident Monitoring and Response System</Text>
-            </View>
             <View style={styles.TopView}>
                 <Text style={styles.title}>IMRS</Text>
             </View>
+            <View>
+                <Text style={styles.topText}>Incident Monitoring and Response System</Text>
+            </View>
             <View style={styles.MiddleView}>
                 <Link href={'/login'} asChild>
-                    <IMRS_Button title={'login'}/>
+                    <IMRS_Button title={'login'} color='white' backgroundColor='#FF5733' />
                 </Link>
                 <Link href={'/register'} asChild>
-                    <IMRS_Button title={'register'}/>
+                    <IMRS_Button title={'register'} color='white' backgroundColor='#FF5733' />
                 </Link>
             </View>
             <View style={styles.BottomView}>
@@ -31,6 +32,7 @@ export default function Start() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: ColorsOp.JB
     },
     TopView: {
         justifyContent: 'center',
@@ -46,19 +48,17 @@ const styles = StyleSheet.create({
     BottomView: {
         flex: 3,
         justifyContent: 'space-between',
-
     },
     topText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'black',
-        justifyContent: 'center',
+        fontSize: 25,
+        // fontWeight: 'bold',
+        color: 'white',
+        // justifyContent: 'center',
         alignSelf: 'center',
+        textAlign: 'center'
     },
     title: {
-        fontSize: 100,
-        fontWeight: 'bold',
-        color: 'red',
-
-    }
+        fontSize: 150,
+        color: ColorsOp.RO,
+    },
 })
