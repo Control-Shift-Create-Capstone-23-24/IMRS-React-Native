@@ -5,4 +5,4 @@ const ColorsOp = {
     RO: '#FF5733', //Red Orange
 }
 
-module.exports = ColorsOp
+export default ColorsOp

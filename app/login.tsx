@@ -51,6 +51,11 @@ export default function Login() {
             <Button title="open Heatmap" />
           </Link>
         </View>
+        <View>
+          <Link href="/home" asChild>
+            <Button title="open Home" />
+          </Link>
+        </View>
       </View>
     </View>
   );
