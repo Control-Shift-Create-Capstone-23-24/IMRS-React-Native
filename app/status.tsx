@@ -3,9 +3,10 @@ import { Text, StyleSheet, View, Switch } from "react-native";
 import ColorsOp from "../components/ColorsOp";
 import RadiusSwitch from "../components/RadiusSwitch";
 
-const Home = () => {
+const Status = () => {
     let shooterDescription:string = "White male, mid 30's, 5'10, 200lb, black shirt, blue jean, red cap" //temp
     let shootingLocation:string = "Pleasnt Park"
+
     const { 
         container, 
         warningMsgText, 
@@ -15,6 +16,7 @@ const Home = () => {
         locationText,
         locationWrapper
     } = styles
+
     return (
         <View style={container}>
             <View style={warningMsgWrapper}>
@@ -30,7 +32,18 @@ const Home = () => {
                 <Text style={locationText}>{shootingLocation}</Text>
             </View>
             <View>
-                <RadiusSwitch />
+                <RadiusSwitch 
+                    backgroundColor= {ColorsOp.LG}
+                    text='I have Not Seen and I have Not Heard the shooter' 
+                />
+                <RadiusSwitch 
+                    backgroundColor='yellow' 
+                    text='I have Not Seen the shooter but I Can Hear the shooter'
+                />
+                <RadiusSwitch 
+                    backgroundColor= {ColorsOp.BR}
+                    text='I Can See or Have Seen the shooter and Can Hear the shooter'
+                />
             </View>
         </View>
     )
@@ -72,4 +85,4 @@ const styles = StyleSheet.create ({
     }
 })
 
-export default Home
+export default Status

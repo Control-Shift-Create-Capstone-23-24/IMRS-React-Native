@@ -63,8 +63,8 @@ export default function Login() {
           </Link>
         </View>
         <View>
-          <Link href="/home" asChild>
-            <Button title="open Home" />
+          <Link href="/status" asChild>
+            <Button title="open Status page" />
           </Link>
         </View>
       </View>
