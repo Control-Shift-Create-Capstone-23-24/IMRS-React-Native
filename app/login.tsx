@@ -10,16 +10,27 @@ export default function Login() {
   const [username, onChangeUsernameField] = React.useState('');
   const [password, onChangePasswordField] = React.useState('');
 
+  const { 
+      container, 
+      title, 
+      titleText,
+      credentials,
+      userPassInput,
+      userPassText,
+      loginButton,
+      bottom
+    } = styles
+
   return (
-    <View style={styles.container}>
-      <View style={styles.title}>
-        <Text style={styles.titleText}>Login Page</Text>
+    <View style={container}>
+      <View style={title}>
+        <Text style={titleText}>Login Page</Text>
       </View>
-      <View style={styles.credentials}>
+      <View style={credentials}>
         <View>
-          <Text style={styles.userPassText}>Username</Text>
+          <Text style={userPassText}>Username</Text>
           <TextInput
-            style={styles.userPassInput}
+            style={userPassInput}
             autoComplete={"username"}
             onChangeText={onChangeUsernameField}
             value={username}
@@ -27,20 +38,20 @@ export default function Login() {
           />
         </View>
         <View>
-          <Text style={styles.userPassText}>Password</Text>
+          <Text style={userPassText}>Password</Text>
           <TextInput
-            style={styles.userPassInput}
+            style={userPassInput}
             autoComplete={"current-password"}
             onChangeText={onChangePasswordField}
             value={password}
             placeholder={'Password'}
           />
         </View>
-        <View style={styles.loginButton}>
+        <View style={loginButton}>
           <IMRS_Button title={'Login'} onPress={ () => {} } color='white' backgroundColor='#FF5733' />
         </View>
       </View>
-      <View style={styles.bottom}>
+      <View style={bottom}>
         <View>
           <Link href="/register" asChild>
             <Button title="open Register modal" />
@@ -79,7 +90,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: 40,
     padding: 10
-    
   },
   bottom: {
     flex: 2,

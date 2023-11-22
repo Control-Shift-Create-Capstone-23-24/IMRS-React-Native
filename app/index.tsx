@@ -6,15 +6,24 @@ import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../components/ColorsOp'
 
 export default function Start() {
+    const { 
+        container,
+        TopView,
+        title,
+        topText,
+        MiddleView,
+        BottomView
+    } = styles
+
     return (
-        <View style={styles.container}>
-            <View style={styles.TopView}>
-                <Text style={styles.title}>IMRS</Text>
+        <View style={container}>
+            <View style={TopView}>
+                <Text style={title}>IMRS</Text>
             </View>
             <View>
-                <Text style={styles.topText}>Incident Monitoring and Response System</Text>
+                <Text style={topText}>Incident Monitoring and Response System</Text>
             </View>
-            <View style={styles.MiddleView}>
+            <View style={MiddleView}>
                 <Link href={'/login'} asChild>
                     <IMRS_Button title={'login'} color='white' backgroundColor='#FF5733' />
                 </Link>
@@ -22,7 +31,7 @@ export default function Start() {
                     <IMRS_Button title={'register'} color='white' backgroundColor='#FF5733' />
                 </Link>
             </View>
-            <View style={styles.BottomView}>
+            <View style={BottomView}>
 
             </View>
         </View>

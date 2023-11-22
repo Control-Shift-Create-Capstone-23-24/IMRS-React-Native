@@ -12,54 +12,64 @@ export default function Register() {
     const [lastName, onChangeLastNameField] = React.useState('');
     const [email, onChangeEmailField] = React.useState('');
     const [school, onChangeSchoolField] = React.useState('');
+    
+    const {
+        container,
+        pageTitle,
+        infoWrapper,
+        infoText,
+        infoInput,
+        registerButton
+    } = styles
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.pageTitle}>Register</Text>
-            <View style={styles.infoWrapper}>
-                <Text style={styles.infoText}>First Name</Text>
+        <View style={container}>
+            <Text style={pageTitle}>Register</Text>
+            <View style={infoWrapper}>
+                <Text style={infoText}>First Name</Text>
                 <TextInput 
-                    style={styles.infoInput} 
+                    style={infoInput} 
                     onChangeText={onChangeFirstNameField}
                     value={firstName}
                 />
-                <Text style={styles.infoText}>Last Name</Text>
+                <Text style={infoText}>Last Name</Text>
                 <TextInput 
-                    style={styles.infoInput} 
+                    style={infoInput} 
                     onChangeText={onChangeLastNameField}
                     value={lastName}
                 />
-                <Text style={styles.infoText}>Email</Text>
+                <Text style={infoText}>Email</Text>
                 <TextInput 
-                    style={styles.infoInput} 
+                    style={infoInput} 
                     onChangeText={onChangeEmailField}
                     value={email}
                 />
-                <Text style={styles.infoText}>Username</Text>
+                <Text style={infoText}>Username</Text>
                 <TextInput 
-                    style={styles.infoInput} 
+                    style={infoInput} 
                     onChangeText={onChangeUsernameField}
                     value={username}
                 />
-                <Text style={styles.infoText}>Password</Text>
+                <Text style={infoText}>Password</Text>
                 <TextInput 
-                    style={styles.infoInput} 
+                    style={infoInput} 
                     onChangeText={onChangePasswordField}
                     value={password}
                 />
-                <Text style={styles.infoText}>Confirm Password</Text>
+                <Text style={infoText}>Confirm Password</Text>
                 <TextInput 
-                    style={styles.infoInput} 
+                    style={infoInput} 
                     onChangeText={onChangeConfirmPasswordField}
                     value={confirmPassword}
                 />
-                <Text style={styles.infoText}>School</Text>
+                <Text style={infoText}>School</Text>
                 <TextInput 
-                    style={styles.infoInput} 
+                    style={infoInput} 
                     onChangeText={onChangeSchoolField}
                     value={school}
                 />
             </View>
-            <View style={styles.registerButton}>
+            <View style={registerButton}>
                 <IMRS_Button title={'Register'} onPress={ () => {} } color='white' backgroundColor='#FF5733' />
             </View>
             <Link href='/modal' asChild>
