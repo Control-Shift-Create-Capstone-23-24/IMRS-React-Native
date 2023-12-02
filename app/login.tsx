@@ -48,7 +48,7 @@ export default function Login() {
           />
         </View>
         <View style={loginButton}>
-          <IMRS_Button title={'Login'} onPress={ () => {} } color='white' backgroundColor='#FF5733' />
+          <IMRS_Button title={'Login'} onPress={ () => {} } color='white' backgroundColor= {ColorsOp.RO} />
         </View>
       </View>
       <View style={bottom}>
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
   userPassInput: {
     borderWidth: 1,
     height: 40,
-    padding: 10
+    padding: 10,
+    backgroundColor: 'white'
   },
   bottom: {
     flex: 2,

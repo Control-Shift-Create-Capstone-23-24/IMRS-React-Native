@@ -19,49 +19,70 @@ export default function Register() {
         infoWrapper,
         infoText,
         infoInput,
-        registerButton
+        registerButton,
+        infoStyle,
+        infoRow
     } = styles
 
     return (
         <View style={container}>
             <Text style={pageTitle}>Register</Text>
             <View style={infoWrapper}>
-                <Text style={infoText}>First Name</Text>
-                <TextInput 
-                    style={infoInput} 
-                    onChangeText={onChangeFirstNameField}
-                    value={firstName}
-                />
-                <Text style={infoText}>Last Name</Text>
-                <TextInput 
-                    style={infoInput} 
-                    onChangeText={onChangeLastNameField}
-                    value={lastName}
-                />
-                <Text style={infoText}>Email</Text>
-                <TextInput 
-                    style={infoInput} 
-                    onChangeText={onChangeEmailField}
-                    value={email}
-                />
-                <Text style={infoText}>Username</Text>
-                <TextInput 
-                    style={infoInput} 
-                    onChangeText={onChangeUsernameField}
-                    value={username}
-                />
-                <Text style={infoText}>Password</Text>
-                <TextInput 
-                    style={infoInput} 
-                    onChangeText={onChangePasswordField}
-                    value={password}
-                />
-                <Text style={infoText}>Confirm Password</Text>
-                <TextInput 
-                    style={infoInput} 
-                    onChangeText={onChangeConfirmPasswordField}
-                    value={confirmPassword}
-                />
+                <View style={infoRow}>
+                    <View style={infoStyle}>
+                        <Text style={infoText}>First Name</Text>
+                        <TextInput 
+                            style={infoInput} 
+                            onChangeText={onChangeFirstNameField}
+                            value={firstName}
+                        />
+                    </View>
+                    <View style={infoStyle}>
+                        <Text style={infoText}>Last Name</Text>
+                        <TextInput 
+                            style={infoInput} 
+                            onChangeText={onChangeLastNameField}
+                            value={lastName}
+                        />
+                    </View>
+                </View>
+                <View style={infoRow}>
+                    <View style={infoStyle}>
+                        <Text style={infoText}>Email</Text>
+                        <TextInput 
+                            style={infoInput} 
+                            onChangeText={onChangeEmailField}
+                            value={email}
+                        />
+                    </View>
+                    <View style={infoStyle}>
+                        <Text style={infoText}>Username</Text>
+                    <TextInput 
+                        style={infoInput} 
+                        onChangeText={onChangeUsernameField}
+                        value={username}
+                    />
+                    </View>
+                </View>
+                <View style={infoRow}>
+                    <View style={infoStyle}>
+                        <Text style={infoText}>Password</Text>
+                        <TextInput 
+                            style={infoInput} 
+                            onChangeText={onChangePasswordField}
+                            value={password}
+                        />
+                    </View>
+                    <View style={infoStyle}>
+                        <Text style={infoText}>Confirm Password</Text>
+                        <TextInput 
+                            style={infoInput} 
+                            onChangeText={onChangeConfirmPasswordField}
+                            value={confirmPassword}
+                        />
+                    </View>
+                </View>
+
                 <Text style={infoText}>School</Text>
                 <TextInput 
                     style={infoInput} 
@@ -83,7 +104,7 @@ const styles = StyleSheet.create ({
     container: {
         flex: 1,
         backgroundColor: ColorsOp.JB,
-        paddingTop: 20
+        paddingTop: 20,
     },
     pageTitle: {
         alignSelf: "center",
@@ -92,22 +113,32 @@ const styles = StyleSheet.create ({
     },
     infoWrapper: {
         paddingLeft: 30,
-        paddingRight: 30,
+        paddingRight: 30
     },
     infoInput: {
         borderWidth: 1,
         height: 40,
-        padding: 10
+        padding: 10,
+        backgroundColor: 'white',
+        width: '170%',
+        alignSelf: 'center'
     },
     infoText: {
         paddingBottom: 10,
         paddingTop: 10,
         fontSize: 20,
         color: ColorsOp.RO,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     registerButton: {
         paddingTop: 10,
         alignItems: 'center'
+    },
+    infoStyle: {
+        flexDirection: 'column'
+    },
+    infoRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     }
 })
