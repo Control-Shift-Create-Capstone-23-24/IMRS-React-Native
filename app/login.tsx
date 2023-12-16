@@ -66,19 +66,23 @@ const styles = StyleSheet.create({
   },
   credentials: {
     flex: 2,
+
     justifyContent: "space-around",
+    alignItems: "center"
   },
   username: {
-
     borderWidth: 1,
+    width: 300,
+    height: 35
   },
   password: {
     borderWidth: 1,
+    width: 300,
+    height: 35
   },
   bottom: {
     flex: 2,
     justifyContent: "center",
-
   },
   usernameText: {
     paddingBottom: 10,
