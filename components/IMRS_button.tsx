@@ -21,13 +21,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 20,
         borderWidth: 2,
-        // shadowColor: "red",
-        // shadowOffset: {
-        //     width: -10,
-        //     height: 10
-        // },
-        // shadowOpacity: 2.28,
-        // shadowRadius: 15.25,
         elevation: 22,
     },
     text: {
