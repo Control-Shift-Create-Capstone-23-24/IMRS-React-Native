@@ -1,84 +1,92 @@
-/**
- * @file This file defines the Start component of the application.
- * It includes the definition of several views and their styles.
- *
- * @module app/index
- */
-
-import { View, Text, Button, StyleSheet } from 'react-native'
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
-import Container from "@react-navigation/native-stack/src/views/DebugContainer";
 import IMRS_Button from "../components/IMRS_button";
+import ColorsOp from '../components/ColorsOp'
+import { LinearGradient } from "expo-linear-gradient";
+import useSafeAreaInsets from "react-native-maps/lib/decorateMapComponent"
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-/**
- * This is the default function that returns the Start component of the application.
- * It uses the `View`, `Text`, `Button`, `StyleSheet` components from `react-native` and `Link` from `expo-router`.
- *
- * @returns {JSX.Element} The Start component of the application.
- */
+const START = {x: 0.5, y: 0}
+const END = {x: 0.5, y: 1}
+const GRADIENT_COLORS = ['#ff5733', ColorsOp.JB]
+const GRADIENT_LOCATIONS = [0, 0.45,1]
+
 export default function Start() {
+    const {
+        container,
+        topView,
+        title,
+        topText,
+        middleView,
+        bottomView
+    } = styles
+
+   // const insects = useSafeAreaInsets();
+
     return (
-        <View style={styles.container}>
-            <View style={styles.container}>
+        <SafeAreaView style={styles.container} >
+            <View style={{
+                flex: 1,
+                justifyContent: 'space-between',
+                alignItems: 'stretch',
+
+
+            }}
+            >
+            <LinearGradient colors={GRADIENT_COLORS} style={styles.container} locations={GRADIENT_LOCATIONS} start={START} end={END} >
+            <View style={topView}>
+                <Text style={title}>IMRS</Text>
             </View>
             <View>
-                <Text style={styles.topText}>Incident Monitoring and Response System</Text>
+                <Text style={topText}>Incident Monitoring and Response System</Text>
             </View>
-            <View style={styles.TopView}>
-                <Text style={styles.title}>IMRS</Text>
-            </View>
-            <View style={styles.MiddleView}>
+            <View style={middleView}>
                 <Link href={'/login'} asChild>
-                    <IMRS_Button title={'login'}/>
+                    <IMRS_Button title={'login'} color='white' backgroundColor= {ColorsOp.RO} />
                 </Link>
                 <Link href={'/register'} asChild>
-                    <IMRS_Button title={'register'}/>
+                    <IMRS_Button title={'register'} color='white' backgroundColor= {ColorsOp.RO} />
                 </Link>
             </View>
-            <View style={styles.BottomView}>
+            <View style={bottomView}>
 
             </View>
-        </View>
+            </LinearGradient>
+            </View>
+        </SafeAreaView>
     )
 }
 
-
-/**
- * This is the StyleSheet for the Start component.
- * It defines the styles for the different parts of the Start component.
- */
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+       backgroundColor: ColorsOp.JB
     },
-    TopView: {
+    topView: {
         justifyContent: 'center',
         alignItems: 'center',
         flex: 5,
     },
-    MiddleView: {
+    middleView: {
         flex: 2,
         justifyContent: 'space-around',
         alignItems: 'center',
         paddingTop: 200,
     },
-    BottomView: {
+    bottomView: {
         flex: 3,
         justifyContent: 'space-between',
-
     },
     topText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: 'black',
-        justifyContent: 'center',
+        fontSize: 25,
+        //fontWeight: 'bold',
+        color: 'white',
         alignSelf: 'center',
+        textAlign: 'center'
     },
     title: {
-        fontSize: 100,
-        fontWeight: 'bold',
-        color: 'red',
-
-    }
+        fontSize: 150,
+        color: ColorsOp.RO,
+    },
 })

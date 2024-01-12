@@ -1,22 +1,17 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
+import ColorsOp from "../components/ColorsOp";
+import Map from "./map"
 
-/**
- * This is the default function that returns the layout of the application.
- * It uses the `Stack` component from `expo-router` to define the navigation stack.
- *
- * @returns {JSX.Element} The layout of the application.
- */
 export default function _layout() {
     return (
         <Stack
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: 'white'
-
+                    backgroundColor: ColorsOp.RO
                 },
-                headerTintColor: 'red'
+                headerTintColor: '#FF5733'//red orange
             }}
         >
             <Stack.Screen name="index" options={{
@@ -32,8 +27,11 @@ export default function _layout() {
                 title: 'Modal Modal',
                 presentation: 'modal'
             }} />
-            <Stack.Screen name="map" options={{
+            <Stack.Screen name="heatmap" options={{
                 title: 'IMRS'
+            }} />
+            <Stack.Screen name="map" options={{
+                title: 'Map'
             }} />
             <Stack.Screen name="[missing]" options={{
                 title: '404'

@@ -4,21 +4,33 @@ import { Link } from "expo-router";
 import Old_heatmapTsx from "./heatmap";
 import IMRS_Button from "../components/IMRS_button";
 import heatmap from "./heatmap";
+import ColorsOp from '../components/ColorsOp'
 
 export default function Login() {
   const [username, onChangeUsernameField] = React.useState('');
   const [password, onChangePasswordField] = React.useState('');
 
+  const { 
+      container, 
+      title, 
+      titleText,
+      credentials,
+      userPassInput,
+      userPassText,
+      loginButton,
+      bottom
+    } = styles
+
   return (
-    <View style={styles.container}>
-      <View style={styles.title}>
-        <Text style={styles.titleText}>Login Page</Text>
+    <View style={container}>
+      <View style={title}>
+        <Text style={titleText}>Login Page</Text>
       </View>
-      <View style={styles.credentials}>
+      <View style={credentials}>
         <View>
-          <Text style={styles.usernameText}>Username</Text>
+          <Text style={userPassText}>Username</Text>
           <TextInput
-            style={styles.username}
+            style={userPassInput}
             autoComplete={"username"}
             onChangeText={onChangeUsernameField}
             value={username}
@@ -26,20 +38,20 @@ export default function Login() {
           />
         </View>
         <View>
-          <Text style={styles.passwordText}>Password</Text>
+          <Text style={userPassText}>Password</Text>
           <TextInput
-            style={styles.password}
+            style={userPassInput}
             autoComplete={"current-password"}
             onChangeText={onChangePasswordField}
             value={password}
             placeholder={'Password'}
           />
         </View>
-        <View>
-          <IMRS_Button title={'Login'} onPress={ () => {} } />
+        <View style={loginButton}>
+          <IMRS_Button title={'Login'} onPress={ () => {} } color='white' backgroundColor= {ColorsOp.RO} />
         </View>
       </View>
-      <View style={styles.bottom}>
+      <View style={bottom}>
         <View>
           <Link href="/register" asChild>
             <Button title="open Register modal" />
@@ -50,6 +62,11 @@ export default function Login() {
             <Button title="open Heatmap" />
           </Link>
         </View>
+        <View>
+          <Link href="/status" asChild>
+            <Button title="open Status page" />
+          </Link>
+        </View>
       </View>
     </View>
   );
@@ -58,7 +75,7 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: ColorsOp.JB
   },
   title: {
     flex: 3,
@@ -66,35 +83,33 @@ const styles = StyleSheet.create({
   },
   credentials: {
     flex: 2,
-
     justifyContent: "space-around",
-    alignItems: "center"
+    padding: 30,
   },
-  username: {
+  userPassInput: {
     borderWidth: 1,
-    width: 300,
-    height: 35
-  },
-  password: {
-    borderWidth: 1,
-    width: 300,
-    height: 35
+    height: 40,
+    padding: 10,
+    backgroundColor: 'white'
   },
   bottom: {
     flex: 2,
     justifyContent: "center",
   },
-  usernameText: {
+  userPassText: {
     paddingBottom: 10,
+    paddingTop: 10,
     fontSize: 20,
-  },
-  passwordText: {
-    paddingBottom: 10,
-    fontSize: 20,
-
+    color: ColorsOp.RO,
+    textAlign: 'center'
   },
   titleText: {
     alignSelf: "center",
-    fontSize: 30,
+    fontSize: 50,
+    color: ColorsOp.RO
   },
+  loginButton: {
+    paddingTop: 10,
+    alignItems: 'center'
+  }
 });

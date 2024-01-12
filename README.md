@@ -1,3 +1,4 @@
+
 # IMRS-React-Native
 ***
 # Description
@@ -14,7 +15,7 @@ winget install -e --id Google.AndroidStudio
 ```
 Launch Android Studio and update to the latest version.
 
-In the Main Menu under Tools open the Device Manager and Create a Virtual Device (make sure it's a phone). Select an image that's on Android version 14 
+In the Main Menu under Tools open the Device Manager and Create a Virtual Device (make sure it's a phone). Select an image that's on Android version 14
 
 Remember to open Android Studio and start your Virtual Machine whenever you want to run IMRS on Android.
 
@@ -46,7 +47,7 @@ Add the Google Maps API Key. Instructions can be found in the "Google Maps API" 
 ## Google Maps API Key
 ***
 
-For a Google Maps api key (if needed). [Create an account](https://developers.google.com/maps/documentation/) then generate a Google Maps api key 
+For a Google Maps api key (if needed). [Create an account](https://developers.google.com/maps/documentation/) then generate a Google Maps api key
 
 ### IOS (mac only)
 
@@ -94,4 +95,5 @@ Add the Google Map API Key to your AndroidManifest.xml file found at android/app
 
 
 For a more detailed explanation look [here](https://github.com/react-native-maps/react-native-maps/blob/master/docs/installation.md).
+
 
