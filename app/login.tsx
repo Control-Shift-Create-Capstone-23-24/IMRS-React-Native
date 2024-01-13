@@ -1,10 +1,10 @@
 import { View, Text, Button, TextInput, StyleSheet } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
-import Old_heatmapTsx from "./heatmap";
 import IMRS_Button from "../components/IMRS_button";
-import heatmap from "./heatmap";
 import ColorsOp from '../components/ColorsOp'
+
+
 
 export default function Login() {
   const [username, onChangeUsernameField] = React.useState('');
