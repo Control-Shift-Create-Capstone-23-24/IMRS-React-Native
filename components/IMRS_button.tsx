@@ -6,7 +6,7 @@ interface Props {
     onPress: () => {},
     color: string,
 }
-const IMRS_Button = (Props) => {
+const IMRS_Button = (Props: any) => {
     const {title, backgroundColor, onPress, color, width, height, margin} = Props
     return (
         <TouchableOpacity onPress={onPress} style={{...styles.container, width, height, margin, backgroundColor}}>

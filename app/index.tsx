@@ -4,8 +4,7 @@ import { Link } from 'expo-router'
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../components/ColorsOp'
 import { LinearGradient } from "expo-linear-gradient";
-import useSafeAreaInsets from "react-native-maps/lib/decorateMapComponent"
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 
 const START = {x: 0.5, y: 0}
 const END = {x: 0.5, y: 1}
