@@ -1,4 +1,6 @@
 {
+  "name": "IMRS",
+  "displayName": "IMRS",
   "expo": {
     "name": "-react-IMRS",
     "slug": "-react-IMRS",

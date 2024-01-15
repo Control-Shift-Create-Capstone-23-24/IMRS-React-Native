@@ -1,11 +1,5 @@
-import React from 'react'
-import  LandingPage  from './landingPage'
-import { Link } from 'expo-router'
+import { Redirect } from "expo-router";
 
-export default function index() {
-    return (
-        <div>
-            <LandingPage />
-        </div>
-    )
+export default function Index() {
+    return <Redirect href="/landingPage" />
 }

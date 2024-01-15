@@ -10,7 +10,7 @@ export default function Login() {
   const [username, onChangeUsernameField] = React.useState('');
   const [password, onChangePasswordField] = React.useState('');
 
-  let requester = new Requester('get', 'us-east-1', 'UserID', 'latest')
+  let requester = new Requester('us-east-1', 'UserID', 'latest')
 
   // Uses the username to get the password from the database
   function getPassword(username: string) {
@@ -57,7 +57,7 @@ export default function Login() {
           />
         </View>
         <View style={loginButton}>
-          <IMRS_Button title={'Login'} onPress={ () => {} } color='white' backgroundColor= {ColorsOp.RO} />
+          <IMRS_Button title={'Login'} onPress={ ()=> [] } color='white' backgroundColor= {ColorsOp.RO} />
         </View>
       </View>
       <View style={bottom}>
