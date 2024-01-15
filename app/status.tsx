@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, View, Switch } from "react-native";
-import ColorsOp from "../components/ColorsOp";
+import ColorsOp from "../const/colorsOp";
 import RadiusSwitch from "../components/RadiusSwitch";
 
 const Status = () => {

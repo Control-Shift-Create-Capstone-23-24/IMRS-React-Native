@@ -2,13 +2,20 @@ import { View, Text, Button, TextInput, StyleSheet } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
 import IMRS_Button from "../components/IMRS_button";
-import ColorsOp from '../components/ColorsOp'
-
-
+import ColorsOp from '../const/colorsOp'
+import {Requester} from "../dynamodb/requests";
 
 export default function Login() {
+
   const [username, onChangeUsernameField] = React.useState('');
   const [password, onChangePasswordField] = React.useState('');
+
+  let requester = new Requester('get', 'us-east-1', 'UserID', 'latest')
+
+  // Uses the username to get the password from the database
+  function getPassword(username: string) {
+    requester.get([{Key: 'Username', value: {S: username}}])
+  }
 
   const { 
       container, 
@@ -31,6 +38,7 @@ export default function Login() {
           <Text style={userPassText}>Username</Text>
           <TextInput
             style={userPassInput}
+            autoCapitalize='none'
             autoComplete={"username"}
             onChangeText={onChangeUsernameField}
             value={username}
@@ -41,6 +49,7 @@ export default function Login() {
           <Text style={userPassText}>Password</Text>
           <TextInput
             style={userPassInput}
+            autoCapitalize='none'
             autoComplete={"current-password"}
             onChangeText={onChangePasswordField}
             value={password}

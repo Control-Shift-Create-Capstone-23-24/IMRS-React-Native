@@ -1,7 +1,7 @@
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
-import ColorsOp from '../components/ColorsOp'
+import ColorsOp from '../const/colorsOp'
 import IMRS_Button from '../components/IMRS_button'
 
 export default function Register() {

@@ -1,7 +1,7 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
-import ColorsOp from "../components/ColorsOp";
+import ColorsOp from "../const/colorsOp";
 
 export default function _layout() {
     return (
@@ -14,7 +14,10 @@ export default function _layout() {
             }}
         >
             <Stack.Screen name="index" options={{
-                title: 'Home'
+                title: 'index'
+            }} />
+            <Stack.Screen name="startPage" options={{
+                title: 'startPage'
             }} />
             <Stack.Screen name="register" options={{
                 title: 'Register',
