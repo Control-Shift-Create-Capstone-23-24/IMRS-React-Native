@@ -8,12 +8,10 @@ Copyright 2013 Benjamin Lancaster Keith
 
 3. If someone says "stop" or goes limp &mdash;  or taps out &mdash; the project is over.
 
-4. Only two developers to a project.
+4. One project at a time.
 
-5. One project at a time.
+5. No shirts, no shoes.
 
-6. No shirts, no shoes.
+6. Projects will go on as long as they have to.
 
-7. Projects will go on as long as they have to.
-
-8. If this is your first time reading the FIGHT CLUB LICENSE, you HAVE to license your next project under the FIGHT CLUB LICENSE.
+7. If this is your first time reading the FIGHT CLUB LICENSE, you HAVE to license your next project under the FIGHT CLUB LICENSE.
