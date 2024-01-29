@@ -44,7 +44,7 @@ export default function LandingPage() {
                         <Link href={'/login'} asChild>
                             <IMRS_Button title={'login'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
-                        <Link href={'/register'} asChild>
+                        <Link href={'/firstregister'} asChild>
                             <IMRS_Button title={'register'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
                     </View>
