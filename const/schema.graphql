@@ -1,0 +1,230 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type ModelUserCredentalsConnection {
+  items: [UserCredentals]!
+  nextToken: String
+}
+
+type Mutation {
+  createUserCredentals(condition: ModelUserCredentalsConditionInput, input: CreateUserCredentalsInput!): UserCredentals
+  deleteUserCredentals(condition: ModelUserCredentalsConditionInput, input: DeleteUserCredentalsInput!): UserCredentals
+  updateUserCredentals(condition: ModelUserCredentalsConditionInput, input: UpdateUserCredentalsInput!): UserCredentals
+}
+
+type Query {
+  getUserCredentals(id: ID!): UserCredentals
+  listUserCredentals(filter: ModelUserCredentalsFilterInput, limit: Int, nextToken: String): ModelUserCredentalsConnection
+}
+
+type Subscription {
+  onCreateUserCredentals(filter: ModelSubscriptionUserCredentalsFilterInput): UserCredentals @aws_subscribe(mutations : ["createUserCredentals"])
+  onDeleteUserCredentals(filter: ModelSubscriptionUserCredentalsFilterInput): UserCredentals @aws_subscribe(mutations : ["deleteUserCredentals"])
+  onUpdateUserCredentals(filter: ModelSubscriptionUserCredentalsFilterInput): UserCredentals @aws_subscribe(mutations : ["updateUserCredentals"])
+}
+
+type UserCredentals {
+  LoginID: ID!
+  Password: String!
+  Username: String!
+  createdAt: AWSDateTime!
+  id: ID!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelAttributeTypes {
+  _null
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+input CreateUserCredentalsInput {
+  LoginID: ID!
+  Password: String!
+  Username: String!
+  id: ID
+}
+
+input DeleteUserCredentalsInput {
+  id: ID!
+}
+
+input ModelBooleanInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelFloatInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+}
+
+input ModelIDInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelSizeInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelStringInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionBooleanInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelSubscriptionFloatInput {
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  in: [Float]
+  le: Float
+  lt: Float
+  ne: Float
+  notIn: [Float]
+}
+
+input ModelSubscriptionIDInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  in: [ID]
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+  notIn: [ID]
+}
+
+input ModelSubscriptionIntInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  in: [Int]
+  le: Int
+  lt: Int
+  ne: Int
+  notIn: [Int]
+}
+
+input ModelSubscriptionStringInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  in: [String]
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  notIn: [String]
+}
+
+input ModelSubscriptionUserCredentalsFilterInput {
+  LoginID: ModelSubscriptionIDInput
+  Password: ModelSubscriptionStringInput
+  Username: ModelSubscriptionStringInput
+  and: [ModelSubscriptionUserCredentalsFilterInput]
+  or: [ModelSubscriptionUserCredentalsFilterInput]
+}
+
+input ModelUserCredentalsConditionInput {
+  LoginID: ModelIDInput
+  Password: ModelStringInput
+  Username: ModelStringInput
+  and: [ModelUserCredentalsConditionInput]
+  not: ModelUserCredentalsConditionInput
+  or: [ModelUserCredentalsConditionInput]
+}
+
+input ModelUserCredentalsFilterInput {
+  LoginID: ModelIDInput
+  Password: ModelStringInput
+  Username: ModelStringInput
+  and: [ModelUserCredentalsFilterInput]
+  not: ModelUserCredentalsFilterInput
+  or: [ModelUserCredentalsFilterInput]
+}
+
+input UpdateUserCredentalsInput {
+  LoginID: ID
+  Password: String
+  Username: String
+  id: ID!
+}

@@ -1,19 +1,20 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
+import ColorsOp from "../const/colorsOp";
 
 export default function _layout() {
     return (
         <Stack
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: 'black'
+                    backgroundColor: ColorsOp.RO
                 },
                 headerTintColor: '#FF5733'//red orange
             }}
         >
-            <Stack.Screen name="index" options={{
-                title: 'Home'
+            <Stack.Screen name="landingPage" options={{
+                title: 'landingPage'
             }} />
             <Stack.Screen name="register" options={{
                 title: 'Register',

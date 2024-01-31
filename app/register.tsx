@@ -1,7 +1,7 @@
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
-import ColorsOp from '../components/ColorsOp'
+import ColorsOp from '../const/colorsOp'
 import IMRS_Button from '../components/IMRS_button'
 
 export default function Register() {
@@ -32,7 +32,8 @@ export default function Register() {
                     <View style={infoStyle}>
                         <Text style={infoText}>First Name</Text>
                         <TextInput 
-                            style={infoInput} 
+                            style={infoInput}
+                            autoCapitalize='none'
                             onChangeText={onChangeFirstNameField}
                             value={firstName}
                         />
@@ -40,7 +41,8 @@ export default function Register() {
                     <View style={infoStyle}>
                         <Text style={infoText}>Last Name</Text>
                         <TextInput 
-                            style={infoInput} 
+                            style={infoInput}
+                            autoCapitalize='none'
                             onChangeText={onChangeLastNameField}
                             value={lastName}
                         />
@@ -50,7 +52,8 @@ export default function Register() {
                     <View style={infoStyle}>
                         <Text style={infoText}>Email</Text>
                         <TextInput 
-                            style={infoInput} 
+                            style={infoInput}
+                            autoCapitalize='none'
                             onChangeText={onChangeEmailField}
                             value={email}
                         />
@@ -58,7 +61,8 @@ export default function Register() {
                     <View style={infoStyle}>
                         <Text style={infoText}>Username</Text>
                     <TextInput 
-                        style={infoInput} 
+                        style={infoInput}
+                        autoCapitalize='none'
                         onChangeText={onChangeUsernameField}
                         value={username}
                     />
@@ -68,7 +72,8 @@ export default function Register() {
                     <View style={infoStyle}>
                         <Text style={infoText}>Password</Text>
                         <TextInput 
-                            style={infoInput} 
+                            style={infoInput}
+                            autoCapitalize='none'
                             onChangeText={onChangePasswordField}
                             value={password}
                         />
@@ -76,7 +81,8 @@ export default function Register() {
                     <View style={infoStyle}>
                         <Text style={infoText}>Confirm Password</Text>
                         <TextInput 
-                            style={infoInput} 
+                            style={infoInput}
+                            autoCapitalize='none'
                             onChangeText={onChangeConfirmPasswordField}
                             value={confirmPassword}
                         />
@@ -85,7 +91,8 @@ export default function Register() {
 
                 <Text style={infoText}>School</Text>
                 <TextInput 
-                    style={infoInput} 
+                    style={infoInput}
+                    autoCapitalize='none'
                     onChangeText={onChangeSchoolField}
                     value={school}
                 />

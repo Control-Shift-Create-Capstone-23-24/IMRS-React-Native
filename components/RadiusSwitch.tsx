@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
-import ColorsOp from "./ColorsOp";
+
 
 interface props {
     text: string,
@@ -8,7 +8,7 @@ interface props {
 
 }
 
-const RadiusSwitch = (props) => {
+const RadiusSwitch = (props: any) => {
     const [isEnabled, setIsEnabled] = useState(false)
     const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 

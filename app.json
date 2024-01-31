@@ -1,4 +1,6 @@
 {
+  "name": "IMRS",
+  "displayName": "IMRS",
   "expo": {
     "name": "-react-IMRS",
     "slug": "-react-IMRS",
@@ -23,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "edu.unt.IMRS"
     },
     "web": {
       "bundler": "metro",

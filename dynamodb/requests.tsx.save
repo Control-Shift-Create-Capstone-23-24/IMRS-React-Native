@@ -1,0 +1,83 @@
+import AWS from 'aws-sdk'
+
+
+// For Testing
+const newItem = { id: '123', name: 'Example Item' }
+const getKey = { id: '123' }
+const queryExpression = 'id = :targetId'
+const queryValues = { ':targetId': '123' }
+const scanExpression = 'attributeName = :targetValue'
+const scanValues = { ':targetValue': 'example' }
+const region: string = 'us-east-1'
+const version: string = 'latest'
+
+const params = {
+    TableName: 'UserID',
+    Item: newItem,
+    Key: getKey,
+    FilterExpression: scanExpression,
+    ExpressionAttributeValues: scanValues,
+    KeyConditionExpression: queryExpression,
+}
+
+class Requester {
+    region: string
+    tableName: string
+    version: string
+    dynamodb: AWS.DynamoDB
+
+    constructor(method: string, region: string, tableName: string, version: string) {
+        this.region = region
+        this.tableName = tableName
+        this.version = version
+        AWS.config.update({region: this.region})
+        this.dynamodb = new AWS.DynamoDB({apiVersion: version})
+        //this.setupParam(method)
+    }
+
+    put() {
+         this.dynamodb.putItem(params, (err, data) => {
+            if (err) {
+                console.error('Error requesting a Put Method', err)
+            } else {
+                console.log(data)
+            }
+        })
+    }
+    get(item: Array<any>) {
+        for(var i: number = 0; i < item.length; ++i) {
+            console.warn(item[i])   // Deleteme
+            if(item[i].hasOwnProperty('Key') && item[i].hasOwnProperty('value')) {
+                params.Key[item[i].Key] = item[i].value
+            }
+        }
+        console.warn(params)
+
+        this.dynamodb.getItem(params, (err, data) => {
+            if(data ==  null) {
+                console.error('Item wasn\'t found in the database')
+            }
+            console.warn('get data = ', data)
+        } )
+    }
+    scan() {
+        this.dynamodb.scan(params, (err, data) => {
+            if(err){
+                console.error('Error scanning DynamoDB', err)
+            } else {
+                console.log(data)
+            }
+        })
+    }
+    query() {
+        this.dynamodb.query(params, (err, data) => {
+            if(err){
+                console.error('Error querying DynamoDB', err)
+            } else {
+                console.log(data)
+            }
+        })
+    }
+}
+
+export default Requester
