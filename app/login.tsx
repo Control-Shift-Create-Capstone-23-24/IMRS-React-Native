@@ -1,4 +1,4 @@
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
+import { View, Text, Button, TextInput, StyleSheet, Dimensions } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
 import IMRS_Button from "../components/IMRS_button";
@@ -31,7 +31,7 @@ export default function Login() {
   return (
     <View style={container}>
       <View style={title}>
-        <Text style={titleText}>Login Page</Text>
+      <Text style={titleText}>Login</Text>
       </View>
       <View style={credentials}>
         <View>
@@ -57,7 +57,7 @@ export default function Login() {
           />
         </View>
         <View style={loginButton}>
-          <IMRS_Button title={'Login'} onPress={ ()=> [] } color='white' backgroundColor= {ColorsOp.RO} />
+        <IMRS_Button title={'Login'} onPress={ ()=> [] } color='white' backgroundColor= {ColorsOp.RO} />
         </View>
       </View>
       <View style={bottom}>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor: ColorsOp.JB
   },
   title: {
-    flex: 3,
+    flex: 2,
     justifyContent: "center",
   },
   credentials: {
@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: 40,
     padding: 10,
+    marginTop: Dimensions.get('window').height / 400,
+    marginBottom: Dimensions.get('window').height / 30,
     backgroundColor: 'white'
   },
   bottom: {
@@ -106,19 +108,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   userPassText: {
-    paddingBottom: 10,
-    paddingTop: 10,
-    fontSize: 20,
+    //paddingBottom: 10,
+    //paddingTop: 10,
+    marginBottom: Dimensions.get('window').height / 400,
+    fontSize: 24,
     color: ColorsOp.RO,
     textAlign: 'center'
   },
   titleText: {
     alignSelf: "center",
-    fontSize: 50,
+    fontSize: 60,
     color: ColorsOp.RO
   },
   loginButton: {
-    paddingTop: 10,
-    alignItems: 'center'
+    marginTop: Dimensions.get('window').height / 400,
+    paddingHorizontal: Dimensions.get('window').width / 10,
+    alignItems: 'center',
   }
 });
