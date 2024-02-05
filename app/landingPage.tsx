@@ -4,6 +4,7 @@ import { Link } from 'expo-router'
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../const/colorsOp'
 import { LinearGradient } from "expo-linear-gradient";
+import { useGetLocation } from '../hooks/useGetLocation';
 
 
 const START = {x: 0.5, y: 0}
@@ -22,6 +23,7 @@ export default function LandingPage() {
     } = styles
 
     // const insects = useSafeAreaInsets();
+    const [lat, long] = useGetLocation();
 
     return (
         <SafeAreaView style={styles.container} >
