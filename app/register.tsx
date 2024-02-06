@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, TextInput } from 'react-native'
+import { View, Text, Button, StyleSheet, TextInput, Dimensions } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 import ColorsOp from '../const/colorsOp'
@@ -12,12 +12,13 @@ export default function Register() {
     const [lastName, onChangeLastNameField] = React.useState('');
     const [email, onChangeEmailField] = React.useState('');
     const [school, onChangeSchoolField] = React.useState('');
-    
+
     const {
         container,
         pageTitle,
         infoWrapper,
         infoText,
+        nameInput,
         infoInput,
         registerButton,
         infoStyle,
@@ -29,66 +30,51 @@ export default function Register() {
             <Text style={pageTitle}>Register</Text>
             <View style={infoWrapper}>
                 <View style={infoRow}>
-                    <View style={infoStyle}>
-                        <Text style={infoText}>First Name</Text>
-                        <TextInput 
-                            style={infoInput}
-                            autoCapitalize='none'
-                            onChangeText={onChangeFirstNameField}
-                            value={firstName}
-                        />
-                    </View>
-                    <View style={infoStyle}>
-                        <Text style={infoText}>Last Name</Text>
-                        <TextInput 
-                            style={infoInput}
-                            autoCapitalize='none'
-                            onChangeText={onChangeLastNameField}
-                            value={lastName}
-                        />
-                    </View>
+                    <Text style={infoText}>First Name</Text>
+                    <Text style={infoText}>Last Name</Text>
                 </View>
                 <View style={infoRow}>
-                    <View style={infoStyle}>
-                        <Text style={infoText}>Email</Text>
-                        <TextInput 
+                    <TextInput
+                    style={nameInput}
+                    autoCapitalize='none'
+                    onChangeText={onChangeFirstNameField}
+                    value={firstName}
+                    />
+                    <TextInput
+                    style={nameInput}
+                    autoCapitalize='none'
+                    onChangeText={onChangeLastNameField}
+                    value={lastName}
+                    />
+                </View>
+                    <Text style={infoText}>Email</Text>
+                <TextInput 
                             style={infoInput}
                             autoCapitalize='none'
                             onChangeText={onChangeEmailField}
                             value={email}
                         />
-                    </View>
-                    <View style={infoStyle}>
-                        <Text style={infoText}>Username</Text>
-                    <TextInput 
+                    <Text style={infoText}>Username</Text>
+                <TextInput 
                         style={infoInput}
                         autoCapitalize='none'
                         onChangeText={onChangeUsernameField}
                         value={username}
                     />
-                    </View>
-                </View>
-                <View style={infoRow}>
-                    <View style={infoStyle}>
-                        <Text style={infoText}>Password</Text>
-                        <TextInput 
+                    <Text style={infoText}>Password</Text>
+                <TextInput 
                             style={infoInput}
                             autoCapitalize='none'
                             onChangeText={onChangePasswordField}
                             value={password}
                         />
-                    </View>
-                    <View style={infoStyle}>
-                        <Text style={infoText}>Confirm Password</Text>
-                        <TextInput 
+                    <Text style={infoText}>Confirm Password</Text>
+                <TextInput 
                             style={infoInput}
                             autoCapitalize='none'
                             onChangeText={onChangeConfirmPasswordField}
                             value={confirmPassword}
                         />
-                    </View>
-                </View>
-
                 <Text style={infoText}>School</Text>
                 <TextInput 
                     style={infoInput}
@@ -119,21 +105,30 @@ const styles = StyleSheet.create ({
         color: ColorsOp.RO
     },
     infoWrapper: {
+        marginTop: Dimensions.get('window').width / 100,
         paddingLeft: 30,
         paddingRight: 30
+    },
+    nameInput: {
+        borderWidth: 1,
+        height: 40,
+        padding: 10,
+        backgroundColor: 'white',
+        minWidth:  Dimensions.get('window').width / 2.5,
+        alignSelf: 'center'
     },
     infoInput: {
         borderWidth: 1,
         height: 40,
         padding: 10,
         backgroundColor: 'white',
-        width: '170%',
-        alignSelf: 'center'
+        minWidth:  Dimensions.get('window').width / 1.22,
+        alignSelf: 'center',
+        margin:0
     },
     infoText: {
-        paddingBottom: 10,
-        paddingTop: 10,
-        fontSize: 20,
+        marginTop: Dimensions.get('window').width / 40,
+        fontSize: 24,
         color: ColorsOp.RO,
         textAlign: 'center',
     },
@@ -142,10 +137,12 @@ const styles = StyleSheet.create ({
         alignItems: 'center'
     },
     infoStyle: {
-        flexDirection: 'column'
+        flexDirection: 'column',
+        margin: 0
     },
     infoRow: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        margin: 0,
     }
 })
