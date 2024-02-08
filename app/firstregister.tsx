@@ -1,4 +1,5 @@
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native'
+import { SelectList } from 'react-native-dropdown-select-list'
 import React from 'react'
 import { Link } from 'expo-router'
 import ColorsOp from '../const/colorsOp'
@@ -12,6 +13,14 @@ export default function Register() {
     const [lastName, onChangeLastNameField] = React.useState('');
     const [email, onChangeEmailField] = React.useState('');
     const [school, onChangeSchoolField] = React.useState('');
+
+    const[selected, setSelected] = React.useState("");
+
+    const options = [
+        {key:'1', value:'Cop'},
+        {key:'2', value:'Swat'},
+        {key:'3', value:'Operator'},
+    ]
     
     const {
         container,
@@ -19,12 +28,15 @@ export default function Register() {
         input,
         inputSize,
         infoRow,
-        registerButton
+        registerButton,
+        dropBox,
+        dropOptions,
+        dropDown
     } = styles
 
     return (
         <View style={container}>
-            <Text style={pageTitle}>Register</Text>
+            <Text style={pageTitle}> First Register</Text>
             <View>
                 <View style={infoRow}>
                     <TextInput
@@ -40,12 +52,15 @@ export default function Register() {
                         placeholder='Last Name'
                     />
                 </View>
-                <TextInput
-                    style={input}
-                    onChangeText={onChangeSchoolField}
-                    value={school}
-                    placeholder='School Name'
-                />
+                <SelectList                  
+                    setSelected={(val: React.SetStateAction<string>) => setSelected(val)}
+                    search={false}
+                    data={options}
+                    save="value"
+                    boxStyles={dropBox}
+                    dropdownItemStyles={dropOptions}
+                    dropdownStyles={dropDown}
+                />             
                 <TextInput
                     style={input}
                     onChangeText={onChangeEmailField}
@@ -77,8 +92,8 @@ export default function Register() {
             <Link href='/modal' asChild>
                 <Button title='open login modal' />
             </Link>
-            <Link href='/firstregister' asChild>
-                <Button title='open Responder Register' />
+            <Link href='/register' asChild>
+                <Button title='open student register' />
             </Link>
         </View>
     )
@@ -118,5 +133,26 @@ const styles = StyleSheet.create({
     registerButton: {
         paddingTop: 10,
         alignItems: 'center'
+    },
+    dropBox: {
+        margin: 12,
+        alignSelf: 'center',
+        borderRadius: 1,
+        borderColor: 'black',
+        height: 40,
+        width: 405,
+        backgroundColor: ColorsOp.WH
+    },
+    dropOptions: {
+        alignSelf: 'center',
+        borderWidth: 0,
+        width: 400,
+        backgroundColor: ColorsOp.WH
+    },
+    dropDown: {
+        alignSelf: 'center',
+        width: 400,
+        justifyContent: 'center',
+        backgroundColor: ColorsOp.WH
     }
 })
