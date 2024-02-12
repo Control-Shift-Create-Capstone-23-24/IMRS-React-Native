@@ -1,27 +1,33 @@
-import React, { Component } from 'react';
-import {
-    StyleSheet,
-    View,
-    Platform
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { StyleSheet, View, Platform } from 'react-native';
 import MapView, { Heatmap, PROVIDER_GOOGLE } from 'react-native-maps';
+import {useGetLocation} from "../hooks/useGetLocation";
 
-export default class HeatMap extends Component {
+export const HeatMap = () => {
+    const [lat, long] = useGetLocation();
 
-    static navigationOptions = {
-        title: 'IMRS HeatMap',
-    };
+    let [initialPosition, setInitialPosition] = useState({
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0.006,
+        longitudeDelta: 0.0016,
+    });
 
-    state = {
-        initialPosition: {
-            latitude: 33.210443,
-            longitude: -97.147442,
-            latitudeDelta: 0.006,
-            longitudeDelta: 0.0016
+    // Using useEffect to update initialPosition when lat or long changes
+    useEffect(() => {
+        if (lat !== null && long !== null) {
+            setInitialPosition({
+                latitude: lat,
+                longitude: long,
+                latitudeDelta: 0.006,
+                longitudeDelta: 0.0016,
+            });
         }
-    }
+    }, [lat, long]); // Ensure lat and long are in the dependency array
 
-    points = [
+
+    // Points data
+    const points = [
         { latitude: 33.210479, longitude: -97.147109, weight: 1 },
         { latitude: 33.210529, longitude: -97.147254, weight: 1 },
         { latitude: 33.210443, longitude: -97.147227, weight: 1 },
@@ -35,43 +41,38 @@ export default class HeatMap extends Component {
         { latitude: 33.211215, longitude: -97.147212, weight: 1 },
         { latitude: 33.211054, longitude: -97.147287, weight: 1 },
         { latitude: 33.210941, longitude: -97.147351, weight: 1 },
-
     ];
-    private _map: any;
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <MapView
-                    provider={PROVIDER_GOOGLE}
-                    mapType={"satellite"}
-                    ref={map => this._map = map}
-                    style={styles.map}
-                    initialRegion={this.state.initialPosition}>
-                    <Heatmap
-                        points={this.points}
-                        radius={60}
-                        opacity={4}
-                        gradient={{
-                            colors: ["black", "purple", "red", "orange", "white"],
-                            startPoints: Platform.OS === 'ios' ? [0.01, 0.04, 0.1, 0.45, 0.5] :
-                                [0.1, 0.25, 0.5, 0.75, 1],
-                            colorMapSize: 20000
-                        }}
-
-                    >
-                    </Heatmap>
-                </MapView>
-            </View>
-        );
-    }
-}
+    return (
+        <View style={styles.container}>
+            <MapView
+                provider={PROVIDER_GOOGLE} // Ensure Google Maps is used as the provider
+                style={styles.map}
+                region={initialPosition} // Set the initial region
+                mapType="satellite" // Set map type if needed
+            >
+                <Heatmap
+                    points={points}
+                    radius={60}
+                    opacity={0.65} // Adjust opacity if needed, using a value more typical for visibility
+                    gradient={{
+                        colors: ["black", "purple", "red", "orange", "white"],
+                        startPoints: Platform.OS === 'ios' ? [0.01, 0.04, 0.1, 0.45, 0.5] : [0.1, 0.25, 0.5, 0.75, 1],
+                        colorMapSize: 256 // Adjusted colorMapSize for better compatibility
+                    }}
+                />
+            </MapView>
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
-        ...StyleSheet.absoluteFillObject
+        ...StyleSheet.absoluteFillObject,
     },
     map: {
-        ...StyleSheet.absoluteFillObject
-    }
+        ...StyleSheet.absoluteFillObject,
+    },
 });
+
+export default HeatMap;

@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'expo-router'
 import ColorsOp from '../const/colorsOp'
 import IMRS_Button from '../components/IMRS_button'
+import {insertNewAccount} from "../fetch/insertNewAccount";
 
 export default function Register() {
     const [username, onChangeUsernameField] = React.useState('');
@@ -21,6 +22,17 @@ export default function Register() {
         infoRow,
         registerButton
     } = styles
+
+    const handleRegister = (): void => {
+        insertNewAccount(password, username)
+            .then(response =>{
+                console.log('Account creation result:', response);
+            })
+            .catch(error => {
+                console.error('Account creation failed:', error);
+            })
+    }
+    handleRegister()
 
     return (
         <View style={container}>
@@ -72,7 +84,7 @@ export default function Register() {
                 />
             </View>
             <View style={registerButton}>
-                <IMRS_Button title={'Register'} onPress={ () => {} } color='white' backgroundColor='#FF5733' />
+                <IMRS_Button title={'Register'} onPress={ handleRegister } color='white' backgroundColor='#FF5733' />
             </View>
             <Link href='/modal' asChild>
                 <Button title='open login modal' />

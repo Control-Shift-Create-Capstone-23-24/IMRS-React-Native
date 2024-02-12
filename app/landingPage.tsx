@@ -22,9 +22,6 @@ export default function LandingPage() {
         bottomView
     } = styles
 
-    // const insects = useSafeAreaInsets();
-    const [lat, long] = useGetLocation();
-
     return (
         <SafeAreaView style={styles.container} >
             <View style={{

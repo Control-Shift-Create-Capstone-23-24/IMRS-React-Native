@@ -3,21 +3,32 @@ import React from "react";
 import { Link } from "expo-router";
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../const/colorsOp'
-import {Requester} from "../dynamodb/requests";
+import {verifyLogin} from "../fetch/UsernamePasswordVerifyDynamoDB";
 
 export default function Login() {
 
   const [username, onChangeUsernameField] = React.useState('');
   const [password, onChangePasswordField] = React.useState('');
 
-  let requester = new Requester('us-east-1', 'UserID', 'latest')
+  const handleLogin = (): void => {
+    var usrName = username
+    var pass = password
 
-  // Uses the username to get the password from the database
-  function getPassword(username: string) {
-    requester.get([{Key: 'Username', value: {S: username}}])
+    if( usrName === '' || pass === '') {
+      console.error('User\'s input values for username and/or password is empty. Aborting handleLogin()')
+    }
+    console.log('User\'s input values for username and password:', usrName, pass)
+    verifyLogin(usrName, pass)
+        .then(response => {
+          console.log('Login verification result:', response);
+          // Handle successful login or failure based on the response
+        })
+        .catch(error => {
+          console.error('Login verification failed:', error);
+        });
   }
 
-  const { 
+  const {
       container, 
       title, 
       titleText,
@@ -57,7 +68,7 @@ export default function Login() {
           />
         </View>
         <View style={loginButton}>
-        <IMRS_Button title={'Login'} onPress={ ()=> [] } color='white' backgroundColor= {ColorsOp.RO} />
+        <IMRS_Button title={'Login'} onPress={ handleLogin } color='white' backgroundColor= {ColorsOp.RO} />
         </View>
       </View>
       <View style={bottom}>
@@ -81,6 +92,50 @@ export default function Login() {
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: ColorsOp.JB
+  },
+  title: {
+    flex: 3,
+    justifyContent: "center",
+  },
+  credentials: {
+    flex: 2,
+    justifyContent: "space-around",
+    padding: 30,
+  },
+  userPassInput: {
+    borderWidth: 1,
+    height: 40,
+    padding: 10,
+    backgroundColor: 'white'
+  },
+  bottom: {
+    flex: 2,
+    justifyContent: "center",
+  },
+  userPassText: {
+    paddingBottom: 10,
+    paddingTop: 10,
+    fontSize: 20,
+    color: ColorsOp.RO,
+    textAlign: 'center'
+  },
+  titleText: {
+    alignSelf: "center",
+    fontSize: 50,
+    color: ColorsOp.RO
+  },
+  loginButton: {
+    paddingTop: 10,
+    alignItems: 'center'
+  }
+});
+
+// Creates "Prop `className` did not match. Server" internal server error
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -126,3 +181,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 });
+*/
