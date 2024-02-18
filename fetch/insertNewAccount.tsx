@@ -2,11 +2,12 @@
 // Import AWS SDK and types
 import {Lambda} from 'aws-sdk';
 
+
 // for now hard code your accessKeyID and SecretAcessKey
 const lambda = new Lambda({
     region: 'us-west-2',
-    accessKeyId: '',
-    secretAccessKey: '',
+    accessKeyId: process.env['AWS_ACCESS_KEY'],
+    secretAccessKey: process.env['AWS_SECRET_KEY'],
 });
 
 export const insertNewAccount = async (password: string, username: string): Promise<any> => {
