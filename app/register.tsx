@@ -77,9 +77,6 @@ export default function Register() {
             <Link href='/modal' asChild>
                 <Button title='open login modal' />
             </Link>
-            <Link href='/firstregister' asChild>
-                <Button title='open Responder Register' />
-            </Link>
         </View>
     )
 }
