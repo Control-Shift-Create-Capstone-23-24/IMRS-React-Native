@@ -35,14 +35,17 @@ const Status = () => {
                 <RadiusSwitch 
                     backgroundColor= {ColorsOp.LG}
                     text='I have Not Seen and I have Not Heard the shooter' 
+                    statusColor='Green'
                 />
                 <RadiusSwitch 
                     backgroundColor='yellow' 
                     text='I have Not Seen the shooter but I Can Hear the shooter'
+                    statusColor='Yellow'
                 />
                 <RadiusSwitch 
                     backgroundColor= {ColorsOp.BR}
                     text='I Can See or Have Seen the shooter and Can Hear the shooter'
+                    statusColor='Red'
                 />
             </View>
         </View>
