@@ -76,6 +76,11 @@ export default function Login() {
             <Button title="open Status page" />
           </Link>
         </View>
+        <View>
+          <Link href="/operator" asChild>
+            <Button title="open Operator page" />
+          </Link>
+        </View>
       </View>
     </View>
   );

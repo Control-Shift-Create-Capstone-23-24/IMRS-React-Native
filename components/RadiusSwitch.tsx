@@ -12,7 +12,45 @@ const RadiusSwitch = (props: any) => {
     const [isEnabled, setIsEnabled] = useState(false)
     const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
+<<<<<<< Updated upstream
     const { text, backgroundColor } = props
+=======
+
+    useEffect(() => {
+        const fetchLocation = async () => {
+            try {
+                let { status } = await Location.requestForegroundPermissionsAsync();
+                if (status !== 'granted') {
+                    console.log('Permission Denied');
+                    return;
+                }
+
+                const currentLocation = await Location.getCurrentPositionAsync({});
+                setLat(currentLocation.coords.latitude);
+                setLon(currentLocation.coords.longitude);
+                console.log('Fetched location:', currentLocation);
+                console.log(statusColor)
+                // switchLocation(statusColor, lat, lon)
+            } catch (error) {
+                console.error('Error fetching location:', error);
+            }
+        };
+
+        if (isEnabled) {
+            fetchLocation();
+
+            const interval = setInterval(() => {
+                fetchLocation();
+            }, 5000); // Fetch location every minute (60000 milliseconds)
+
+            return () => {
+                clearInterval(interval);
+            };
+        }
+    }, [isEnabled]);
+
+    const { text, backgroundColor, statusColor } = props
+>>>>>>> Stashed changes
     const { container, switchText, statusSwitch } = styles
 
     return (

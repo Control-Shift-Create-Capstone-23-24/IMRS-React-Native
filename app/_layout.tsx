@@ -10,11 +10,11 @@ export default function _layout() {
                 headerStyle: {
                     backgroundColor: ColorsOp.RO
                 },
-                headerTintColor: '#FF5733'//red orange
+                headerTintColor: ColorsOp.JB
             }}
         >
             <Stack.Screen name="landingPage" options={{
-                title: 'landingPage'
+                title: ''
             }} />
             <Stack.Screen name="register" options={{
                 title: 'Register',
