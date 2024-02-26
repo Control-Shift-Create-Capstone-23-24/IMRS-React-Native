@@ -32,7 +32,7 @@ const RadiusSwitch = (props: any) => {
                 setLon(currentLocation.coords.longitude);
                 console.log('Fetched location:', currentLocation);
                 console.log(statusColor)
-                switchLocation(statusColor, lat, lon)
+                // switchLocation(statusColor, lat, lon)
             } catch (error) {
                 console.error('Error fetching location:', error);
             }

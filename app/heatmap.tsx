@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import { StyleSheet, View, Platform } from 'react-native';
-import MapView, { Heatmap, PROVIDER_GOOGLE } from 'react-native-maps';
-import {useGetLocation} from "../hooks/useGetLocation";
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Circle } from 'react-native-maps';
+import { useGetLocation } from "../hooks/useGetLocation";
+import ColorsOp from '../const/colorsOp';
 
 export const HeatMap = () => {
     const [lat, long] = useGetLocation();
 
-    let [initialPosition, setInitialPosition] = useState({
+    const [initialPosition, setInitialPosition] = useState({
         latitude: 0,
         longitude: 0,
         latitudeDelta: 0.006,
         longitudeDelta: 0.0016,
     });
 
-    // Using useEffect to update initialPosition when lat or long changes
     useEffect(() => {
         if (lat !== null && long !== null) {
             setInitialPosition({
@@ -23,44 +23,33 @@ export const HeatMap = () => {
                 longitudeDelta: 0.0016,
             });
         }
-    }, [lat, long]); // Ensure lat and long are in the dependency array
+    }, [lat, long]);
 
-
-    // Points data
     const points = [
-        { latitude: 33.210479, longitude: -97.147109, weight: 1 },
-        { latitude: 33.210529, longitude: -97.147254, weight: 1 },
-        { latitude: 33.210443, longitude: -97.147227, weight: 1 },
-        { latitude: 33.210506, longitude: -97.147442, weight: 1 },
-        { latitude: 33.210650, longitude: -97.147635, weight: 1 },
-        { latitude: 33.210757, longitude: -97.147372, weight: 1 },
-        { latitude: 33.210955, longitude: -97.147243, weight: 1 },
-        { latitude: 33.210982, longitude: -97.147404, weight: 1 },
-        { latitude: 33.211013, longitude: -97.147233, weight: 1 },
-        { latitude: 33.211067, longitude: -97.147399, weight: 1 },
-        { latitude: 33.211215, longitude: -97.147212, weight: 1 },
-        { latitude: 33.211054, longitude: -97.147287, weight: 1 },
-        { latitude: 33.210941, longitude: -97.147351, weight: 1 },
+        { latitude: 33.25426159975811, longitude: -97.15346049356037, weight: 1, color: ColorsOp.BR },
+        { latitude: 33.254203282133034, longitude: -97.15335856961988, weight: 1, color: ColorsOp.BR },
+        { latitude: 33.254473642666156, longitude: -97.15246433422597, weight: 1, color: ColorsOp.YL },
+        { latitude: 33.25352795145702, longitude: -97.15230949760641, weight: 1, color: ColorsOp.LG },
+        { latitude: 33.25317663249325, longitude: -97.15263271033234, weight: 1, color: ColorsOp.LG },
     ];
 
     return (
         <View style={styles.container}>
             <MapView
-                provider={PROVIDER_GOOGLE} // Ensure Google Maps is used as the provider
+                provider={PROVIDER_GOOGLE}
                 style={styles.map}
-                region={initialPosition} // Set the initial region
-                mapType="satellite" // Set map type if needed
+                region={initialPosition}
+                mapType="satellite"
             >
-                <Heatmap
-                    points={points}
-                    radius={60}
-                    opacity={0.65} // Adjust opacity if needed, using a value more typical for visibility
-                    gradient={{
-                        colors: ["black", "purple", "red", "orange", "white"],
-                        startPoints: Platform.OS === 'ios' ? [0.01, 0.04, 0.1, 0.45, 0.5] : [0.1, 0.25, 0.5, 0.75, 1],
-                        colorMapSize: 256 // Adjusted colorMapSize for better compatibility
-                    }}
-                />
+                {points.map((point, index) => (
+                    <Circle
+                        key={index}
+                        center={{ latitude: point.latitude, longitude: point.longitude }}
+                        radius={20}
+                        fillColor={point.color}
+                        strokeWidth={0} // Set this to 0 to remove the stroke border
+                    />
+                ))}
             </MapView>
         </View>
     );
@@ -76,3 +65,4 @@ const styles = StyleSheet.create({
 });
 
 export default HeatMap;
+

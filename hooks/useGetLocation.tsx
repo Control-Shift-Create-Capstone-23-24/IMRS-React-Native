@@ -17,7 +17,7 @@ export const useGetLocation = () => {
             setLocation(CurrentLocation)
             setLat(CurrentLocation.coords.latitude)
             setLon(CurrentLocation.coords.longitude)
-            console.log(CurrentLocation)
+            // console.log(CurrentLocation)
         })();
     }, []);
     return [lat, lon]
