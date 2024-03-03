@@ -48,6 +48,7 @@ export default function Login() {
         <View>
           <Text style={userPassText}>Password</Text>
           <TextInput
+            secureTextEntry = {true}
             style={userPassInput}
             autoCapitalize='none'
             autoComplete={"current-password"}
