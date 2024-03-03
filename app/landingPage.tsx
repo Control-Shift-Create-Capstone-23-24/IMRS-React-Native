@@ -4,6 +4,7 @@ import { Link } from 'expo-router'
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../const/colorsOp'
 import { LinearGradient } from "expo-linear-gradient";
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 const START = {x: 0.5, y: 0}
@@ -18,7 +19,7 @@ export default function LandingPage() {
         title,
         topText,
         middleView,
-        bottomView
+        bottomView,
     } = styles
 
     // const insects = useSafeAreaInsets();
@@ -42,10 +43,10 @@ export default function LandingPage() {
                     </View>
                     <View style={middleView}>
                         <Link href={'/login'} asChild>
-                            <IMRS_Button title={'login'} color='white' backgroundColor= {ColorsOp.RO} />
+                            <IMRS_Button title={'Login'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
                         <Link href={'/register'} asChild>
-                            <IMRS_Button title={'register'} color='white' backgroundColor= {ColorsOp.RO} />
+                            <IMRS_Button title={'Register'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
                     </View>
                     <View style={bottomView}>
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     title: {
-        fontSize: 150,
-        color: ColorsOp.RO,
+        fontSize: 100,
+        color: '#fff'
     },
 })
