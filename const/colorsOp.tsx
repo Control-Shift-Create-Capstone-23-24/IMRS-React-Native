@@ -5,6 +5,8 @@ const ColorsOp = {
     RO: '#FF5733', //Red Orange
     BR: '#EE4B2B', //Bright Red
     LG: '#32CD32', //Lime Green
+    WH: '#f0f8ff', //Alice blue (white)
+    YL: '#FDFD1A', //Yellow
 }
 
 export default ColorsOp

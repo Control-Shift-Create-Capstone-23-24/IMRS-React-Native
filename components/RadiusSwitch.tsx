@@ -1,20 +1,59 @@
-import React, {useState} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
+import * as Location from 'expo-location';
+import { switchLocation } from "../fetch/switchLocation";
 
 
 interface props {
     text: string,
     backgroundColor: string,
-
+    statusColor: string,
 }
 
 const RadiusSwitch = (props: any) => {
     const [isEnabled, setIsEnabled] = useState(false)
     const toggleSwitch = () => setIsEnabled(previousState => !previousState)
+    const intervalRef:any = useRef<number>();
+    const [lat, setLat] = useState<number | null>(null);
+    const [lon, setLon] = useState<number | null>(null);
 
-    const { text, backgroundColor } = props
+
+    useEffect(() => {
+        const fetchLocation = async () => {
+            try {
+                let { status } = await Location.requestForegroundPermissionsAsync();
+                if (status !== 'granted') {
+                    console.log('Permission Denied');
+                    return;
+                }
+
+                const currentLocation = await Location.getCurrentPositionAsync({});
+                setLat(currentLocation.coords.latitude);
+                setLon(currentLocation.coords.longitude);
+                console.log('Fetched location:', currentLocation);
+                console.log(statusColor)
+                // switchLocation(statusColor, lat, lon)
+            } catch (error) {
+                console.error('Error fetching location:', error);
+            }
+        };
+
+        if (isEnabled) {
+            fetchLocation();
+
+            const interval = setInterval(() => {
+                fetchLocation();
+            }, 5000); // Fetch location every minute (60000 milliseconds)
+
+            return () => {
+                clearInterval(interval);
+            };
+        }
+    }, [isEnabled]);
+
+    const { text, backgroundColor, statusColor } = props
     const { container, switchText, statusSwitch } = styles
-
+    
     return (
         <View style={{...styles.container, backgroundColor}}>
             <Text style={switchText}>{text}</Text>

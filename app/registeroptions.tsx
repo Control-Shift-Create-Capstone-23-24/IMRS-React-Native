@@ -4,7 +4,6 @@ import { Link } from 'expo-router'
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../const/colorsOp'
 import { LinearGradient } from "expo-linear-gradient";
-import { useGetLocation } from '../hooks/useGetLocation';
 
 
 const START = {x: 0.5, y: 0}
@@ -22,12 +21,16 @@ export default function LandingPage() {
         bottomView
     } = styles
 
+    // const insects = useSafeAreaInsets();
+
     return (
         <SafeAreaView style={styles.container} >
             <View style={{
                 flex: 1,
                 justifyContent: 'space-between',
                 alignItems: 'stretch',
+
+
             }}
             >
                 <LinearGradient colors={GRADIENT_COLORS} style={styles.container} locations={GRADIENT_LOCATIONS} start={START} end={END} >
@@ -41,7 +44,7 @@ export default function LandingPage() {
                         <Link href={'/login'} asChild>
                             <IMRS_Button title={'login'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
-                        <Link href={'/registeroptions'} asChild>
+                        <Link href={'/firstregister'} asChild>
                             <IMRS_Button title={'register'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
                     </View>
