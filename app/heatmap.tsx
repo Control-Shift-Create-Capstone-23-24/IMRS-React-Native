@@ -3,8 +3,10 @@ import { StyleSheet, View } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Circle } from 'react-native-maps';
 import { useGetLocation } from "../hooks/useGetLocation";
 import ColorsOp from '../const/colorsOp';
+import {createDynamoDBTable} from "../fetch/createTableForGeoFence";
 
 export const HeatMap = () => {
+    createDynamoDBTable('GeoFence1')
     const [lat, long] = useGetLocation();
 
     const [initialPosition, setInitialPosition] = useState({

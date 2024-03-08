@@ -4,13 +4,22 @@ import { Link } from "expo-router";
 import IMRS_Button from "../components/IMRS_button";
 import ColorsOp from '../const/colorsOp'
 import {verifyLogin} from "../fetch/UsernamePasswordVerifyDynamoDB";
+import { Redirect } from "expo-router";
+import {Account} from "./account";
 
 export default function Login() {
 
-  const [username, onChangeUsernameField] = React.useState('');
-  const [password, onChangePasswordField] = React.useState('');
+  let role: string | undefined = undefined
+  let loginID: number | undefined = undefined
+  let pass: string | undefined = undefined
 
-  const handleLogin = (): void => {
+  const [redirectPath, setRedirectPath] = React.useState<string | null>(null);
+
+
+    const [username, onChangeUsernameField] = React.useState('');
+  const [password, onChangePasswordField] = React.useState('');
+  let user: Account
+    const handleLogin = (): void => {
     var usrName = username
     var pass = password
 
@@ -20,8 +29,46 @@ export default function Login() {
     console.log('User\'s input values for username and password:', usrName, pass)
     verifyLogin(usrName, pass)
         .then(response => {
-          console.log('Login verification result:', response);
-          // Handle successful login or failure based on the response
+            if(typeof response !== 'string') {
+                console.error('Login verification response is not a string:', response);
+            }
+            // Remove square brackets from the string for JSON parser
+            var bracketlessResponse = response.replace(/[\[\]]/g, '')
+            console.log('Login verification result: ', response);
+            try {
+                // Paser JSON response from the server and save to variables
+                const parsedResponse = JSON.parse(bracketlessResponse);
+                console.log('Parsed server response for Login:', parsedResponse);
+                loginID = parsedResponse['LoginID']['N'];
+                role = parsedResponse['Role']['S'];
+                pass = parsedResponse['Password']['S'];
+                console.log('Server login response data: ','Login ID:', loginID, 'Role:', role, 'Username:', usrName)
+            } catch (error) {
+                console.error('server response parsing error on login:', error);
+            }
+            // Set the user of the app to the credentials sent by the server.
+            Account.user = new Account(loginID, username, role)
+            if(role === 'admin') {
+                // redirect to admin page
+                console.log('Redirecting to admin page')
+                setRedirectPath('http/adminStartPage')
+            }
+            if(role === 'student') {
+                // redirect to status/student page
+                console.log('Redirecting to student status page')
+                setRedirectPath('status')
+
+            }
+            if(role === 'firstresponder') {
+                // redirect to firstresponder page
+                console.log('Redirecting to firstresponder page')
+                setRedirectPath('http/heatmap')
+            }
+            if(role === 'dispatch') {
+                // redirect to dispatch/heatmap page
+                console.log('Redirecting to dispatch page')
+               setRedirectPath('http/heatmap')
+            }
         })
         .catch(error => {
           console.error('Login verification failed:', error);
@@ -39,7 +86,8 @@ export default function Login() {
       bottom
     } = styles
 
-  return (
+  // @ts-ignore
+    return (
     <View style={container}>
       <View style={title}>
       <Text style={titleText}>Login</Text>
@@ -69,6 +117,7 @@ export default function Login() {
         </View>
         <View style={loginButton}>
         <IMRS_Button title={'Login'} onPress={ handleLogin } color='white' backgroundColor= {ColorsOp.RO} />
+            {redirectPath && <Redirect href={redirectPath} />}
         </View>
       </View>
       <View style={bottom}>
