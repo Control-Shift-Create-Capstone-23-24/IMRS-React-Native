@@ -30,18 +30,27 @@ export default function AdminStartPage() {
                 alignItems: 'stretch',
             }}
             >
-                <View style={topView}>
-                    <Text style={title}>Admin Page</Text>
-                </View>
-                <View>
-                    <Text style={topText}> this page needs work </Text>
-                </View>
                 <View style={middleView}>
                     <Link href={'/login'} asChild>
                         <IMRS_Button title={'login'} color='white' backgroundColor= {ColorsOp.RO} />
                     </Link>
-                    <Link href={'/registeroptions'} asChild>
+                    <Link href={'/register'} asChild>
                         <IMRS_Button title={'register'} color='white' backgroundColor= {ColorsOp.RO} />
+                    </Link>
+                    <Link href={'/registeroptions'} asChild>
+                        <IMRS_Button title={'registerOptions'} color='white' backgroundColor= {ColorsOp.RO} />
+                    </Link>
+                    <Link href={'/heatmap'} asChild>
+                        <IMRS_Button title={'heatmap'} color='white' backgroundColor= {ColorsOp.RO} />
+                    </Link>
+                    <Link href={'/status'} asChild>
+                        <IMRS_Button title={'status'} color='white' backgroundColor= {ColorsOp.RO} />
+                    </Link>
+                    <Link href={'/landingPage'} asChild>
+                        <IMRS_Button title={'mobleLandingPage'} color='white' backgroundColor= {ColorsOp.RO} />
+                    </Link>
+                    <Link href={'/webLandingPage'} asChild>
+                        <IMRS_Button title={'webLandingPage'} color='white' backgroundColor= {ColorsOp.RO} />
                     </Link>
                 </View>
                 <View style={bottomView}>

@@ -51,7 +51,7 @@ export default function Login() {
             if(role === 'admin') {
                 // redirect to admin page
                 console.log('Redirecting to admin page')
-                setRedirectPath('http/adminStartPage')
+                setRedirectPath('adminStartPage')
             }
             if(role === 'student') {
                 // redirect to status/student page
