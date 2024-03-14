@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
 import * as Location from 'expo-location';
-import { switchLocation } from "../fetch/switchLocation";
+import { insertNewLocation } from "../fetch/insertNewLocation";
 
 
 interface props {
@@ -32,6 +32,10 @@ const RadiusSwitch = (props: any) => {
                 setLon(currentLocation.coords.longitude);
                 console.log('Fetched location:', currentLocation);
                 console.log(statusColor)
+                if(lat !== null || lon !== null) {
+                    insertNewLocation(lat.toString(), lon?.toString(), statusColor, 'NA')
+                }
+                
                 // switchLocation(statusColor, lat, lon)
             } catch (error) {
                 console.error('Error fetching location:', error);

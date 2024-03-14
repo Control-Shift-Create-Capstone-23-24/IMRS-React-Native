@@ -9,7 +9,7 @@ const lambda = new Lambda({
     secretAccessKey: process.env['AWS_SECRET_KEY'],
 });
 
-export const insertNewLocation = async (longitude: string, latitude: string, status: number, username: string): Promise<any> => {
+export const insertNewLocation = async (longitude: string, latitude: string, status: string, username: string): Promise<any> => {
     const params = {
         FunctionName: 'InsertNewLocation', // Update with your Lambda function name
         Payload: JSON.stringify({
