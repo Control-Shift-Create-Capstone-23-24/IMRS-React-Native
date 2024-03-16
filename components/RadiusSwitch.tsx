@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
 import * as Location from 'expo-location';
 import { insertNewLocation } from "../fetch/insertNewLocation";
-
+import {Account} from "../app/account";
 
 interface props {
     text: string,
@@ -33,7 +33,7 @@ const RadiusSwitch = (props: any) => {
                 console.log('Fetched location:', currentLocation);
                 console.log(statusColor)
                 if(lat !== null || lon !== null) {
-                    insertNewLocation(lat.toString(), lon?.toString(), statusColor, 'NA')
+                    insertNewLocation(lat.toString(), lon?.toString(), statusColor,  Account.user.getUserName())
                 }
                 
                 // switchLocation(statusColor, lat, lon)

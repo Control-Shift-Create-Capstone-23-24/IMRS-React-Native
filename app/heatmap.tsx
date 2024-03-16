@@ -27,6 +27,7 @@ export const HeatMap = () => {
         }
     }, [lat, long]);
 
+    // Hard-coded coordinates for testing
     const points = [
         { latitude: 33.25426159975811, longitude: -97.15346049356037, weight: 1, color: ColorsOp.BR },
         { latitude: 33.254203282133034, longitude: -97.15335856961988, weight: 1, color: ColorsOp.BR },
@@ -34,6 +35,8 @@ export const HeatMap = () => {
         { latitude: 33.25352795145702, longitude: -97.15230949760641, weight: 1, color: ColorsOp.LG },
         { latitude: 33.25317663249325, longitude: -97.15263271033234, weight: 1, color: ColorsOp.LG },
     ];
+
+
 
     return (
         <View style={styles.container}>

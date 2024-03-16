@@ -49,4 +49,17 @@ export class Account {
         this.geofence = geofence;
         console.log('Geofence set to:', this.geofence);
     }
+    getUserName(): string | undefined {
+        return this.username;
+    }
+    getLoginID(): number | undefined {
+        return this.loginID;
+    }
+    getUserRole(): string | undefined {
+        return this.userType;
+    }
+    getGeofence(): string | undefined {
+        return this.geofence;
+    }
+
 }
