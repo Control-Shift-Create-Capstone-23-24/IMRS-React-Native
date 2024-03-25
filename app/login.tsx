@@ -62,7 +62,7 @@ export default function Login() {
             if(role === 'firstresponder') {
                 // redirect to firstresponder page
                 console.log('Redirecting to firstresponder page')
-                setRedirectPath('http/heatmap')
+                setRedirectPath('heatmap')
             }
             if(role === 'dispatch') {
                 // redirect to dispatch/heatmap page
@@ -121,7 +121,7 @@ export default function Login() {
         </View>
       </View>
       <View style={bottom}>
-        <View>
+        {/* <View>
           <Link href="/register" asChild>
             <Button title="open Register modal" />
           </Link>
@@ -135,7 +135,7 @@ export default function Login() {
           <Link href="/status" asChild>
             <Button title="open Status page" />
           </Link>
-        </View>
+        </View> */}
       </View>
     </View>
   );
