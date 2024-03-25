@@ -17,8 +17,8 @@ export default function Login() {
 
 
     const [username, onChangeUsernameField] = React.useState('');
-  const [password, onChangePasswordField] = React.useState('');
-  let user: Account
+    const [password, onChangePasswordField] = React.useState('');
+    let user: Account
     const handleLogin = (): void => {
     var usrName = username
     var pass = password
@@ -113,6 +113,7 @@ export default function Login() {
             onChangeText={onChangePasswordField}
             value={password}
             placeholder={'Password'}
+            secureTextEntry={true}
           />
         </View>
         <View style={loginButton}>
