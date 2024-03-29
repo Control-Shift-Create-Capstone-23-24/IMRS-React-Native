@@ -5,6 +5,7 @@ import ColorsOp from '../const/colorsOp'
 import IMRS_Button from '../components/IMRS_button'
 import Alt_Button from '../components/Alt_Button'
 import {insertNewAccount} from "../fetch/insertNewAccount";
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Register() {
     const [username, onChangeUsernameField] = React.useState('');
@@ -17,7 +18,7 @@ export default function Register() {
     
     const {
         container,
-        pageTitle,
+        title,
         input,
         inputSize,
         infoRow,
@@ -35,8 +36,10 @@ export default function Register() {
     handleRegister()
 
     return (
-        <View style={container}>
-            <Text style={pageTitle}>Register</Text>
+        <SafeAreaView style={container}>
+            <View style={styles.topView}>
+            <Text style={styles.title}>Register</Text>
+            </View>
             <View>
                 <View style={infoRow}>
                 <TextInput
@@ -90,7 +93,7 @@ export default function Register() {
             <Link href='/firstregister' asChild>
                 <Button title='open Responder Register' />
             </Link>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -102,10 +105,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 50,
     },
-    pageTitle: {
-        alignSelf: "center",
-        fontSize: 50,
-        color: 'black'
+    topView: {
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    title: {
+        fontSize: 48,
+        color: 'black',
+        fontWeight: 'bold',
+        marginTop: 20,
     },
     input: {
         height: 50,

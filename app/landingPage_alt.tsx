@@ -17,9 +17,9 @@ export default function landingPage_alt() {
             </View>
             <View style={styles.middleView}>
                 <Link href={'/login_alt'} asChild>
-                    <Login_Button title={'Log In'} />
+                    <Login_Button title={'Log In'}/>
                 </Link>
-                <Link href={'/register'} asChild>
+                <Link href={'/register_alt'} asChild>
                     <Login_Button title={'Register'} />
                 </Link>
             </View>
@@ -34,13 +34,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         paddingVertical: 50,
     },
     topView: {
         justifyContent: 'flex-end',
         alignItems: 'center',
+        marginTop: 150,
         marginBottom: 20,
     },
     middleView: {
@@ -56,11 +57,9 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize: 24,
-        fontWeight: 'bold',
-        color: 'black',
+        fontWeight: '600',
+        marginBottom: 40,
         textAlign: 'center',
-        marginTop: 10,
-        marginBottom: 30,
     },
     title: {
         fontSize: 48,

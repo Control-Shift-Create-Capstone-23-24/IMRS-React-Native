@@ -7,6 +7,7 @@ import ColorsOp from '../const/colorsOp'
 import {verifyLogin} from "../fetch/UsernamePasswordVerifyDynamoDB";
 import { Redirect } from "expo-router";
 import {Account} from "./account";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Login() {
 
@@ -16,7 +17,7 @@ export default function Login() {
 
   const [redirectPath, setRedirectPath] = React.useState<string | null>(null);
 
-
+    const [loginError, setLoginError] = React.useState('');
     const [username, onChangeUsernameField] = React.useState('');
     const [password, onChangePasswordField] = React.useState('');
     let user: Account
@@ -26,6 +27,7 @@ export default function Login() {
 
     if( usrName === '' || pass === '') {
       console.error('User\'s input values for username and/or password is empty. Aborting handleLogin()')
+      setLoginError('Login failed. Please check your username and password.');
     }
     console.log('User\'s input values for username and password:', usrName, pass)
     verifyLogin(usrName, pass)
@@ -78,12 +80,15 @@ export default function Login() {
 
 
   // Use your existing styles
-  const { container, headerText, titleText, input } = styles;
+  const { container, bottomView, middleView, topView, titleText, input } = styles;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.headerText}>Incident Monitoring and Response System</Text>
-      <View style={styles.formContainer}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.topView}>
+          <Text style={styles.title}>IMRS</Text>
+          <Text style={styles.subtitle}>Incident Monitoring and Response System</Text>
+        </View>
+        <View style={styles.middleView}>
         <Text style={styles.titleText}>Sign in</Text>
         <TextInput
           style={input}
@@ -101,39 +106,43 @@ export default function Login() {
           autoComplete={"current-password"}
           secureTextEntry
         />
+        </View>
+        {loginError !== '' && <Text style={styles.errorMessage}>{loginError}</Text>}
         <Login_Button title={'Log In'} onPress={handleLogin} />
-        <TouchableOpacity>
+        {/* The link for forgot password should go here if planning to implement that */}
+        <Link href={'/[missing]'}>
           <Text style={styles.linkText}>Forgot password</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </Link>
+        <Link href={'/register_alt'} asChild>
           <Text style={styles.linkText}>Create new account</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+        </Link>
+      </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingVertical: 150,
+  },
+  topView: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  middleView: {
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection: 'column',
+    height: '30%',
+  },
+  bottomView: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: '600',
-    marginBottom: 40,
-    textAlign: 'center',
-  },
-  formContainer: {
-    width: '80%',
-    maxWidth: 400,
-    padding: 20,
-    borderRadius: 10,
-    elevation: 3,
-    backgroundColor: '#fff',
   },
   titleText: {
     fontSize: 20,
@@ -154,5 +163,22 @@ const styles = StyleSheet.create({
     color: 'blue',
     textAlign: 'center',
     marginVertical: 5,
+  },
+  errorMessage: {
+    color: 'red',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    marginBottom: 40,
+    textAlign: 'center',
+  },
+  title: {
+    fontSize: 48,
+    color: 'black',
+    fontWeight: 'bold',
+    marginTop: 20,
   },
 });
