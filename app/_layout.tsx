@@ -9,9 +9,9 @@ export default function _layout() {
         <Stack
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: ColorsOp.RO
+                    backgroundColor: 'black'
                 },
-                headerTintColor: '#FF5733'//red orange
+                headerTintColor: 'white'
             }}
         >
             <Stack.Screen name="landingPage" options={{
@@ -30,8 +30,8 @@ export default function _layout() {
             <Stack.Screen name="heatmap" options={{
                 title: 'IMRS'
             }} />
-            <Stack.Screen name="webLandingPage" options={{
-                title: 'weblandingPage'
+            <Stack.Screen name="landingPage_alt" options={{
+                title: 'landingPage_alt'
             }} />
             <Stack.Screen name="adminStartPage" options={{
                 title: 'Admin'
