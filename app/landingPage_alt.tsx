@@ -22,6 +22,9 @@ export default function landingPage_alt() {
                 <Link href={'/register_alt'} asChild>
                     <Login_Button title={'Register'} />
                 </Link>
+                <Link href={'/firstRegister_alt'} asChild>
+                    <Login_Button title={'Register Operator'} />
+                </Link>
             </View>
             <View style={styles.bottomView}>
 
