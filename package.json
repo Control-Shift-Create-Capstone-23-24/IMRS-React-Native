@@ -24,6 +24,7 @@
     "@react-navigation/native": "^6.0.2",
     "aws-amplify": "^6.0.12",
     "aws-sdk": "^2.1535.0",
+    "dotenv": "^16.4.4",
     "expo": "~49.0.15",
     "expo-font": "~11.4.0",
     "expo-gl": "~13.0.1",

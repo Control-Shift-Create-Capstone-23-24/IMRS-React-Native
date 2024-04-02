@@ -2,6 +2,7 @@ import { View, Text, Button } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
 import ColorsOp from "../const/colorsOp";
+import AdminStartPage from "./adminStartPage";
 
 export default function _layout() {
     return (
@@ -28,6 +29,12 @@ export default function _layout() {
             }} />
             <Stack.Screen name="heatmap" options={{
                 title: 'IMRS'
+            }} />
+            <Stack.Screen name="webLandingPage" options={{
+                title: 'weblandingPage'
+            }} />
+            <Stack.Screen name="adminStartPage" options={{
+                title: 'Admin'
             }} />
             <Stack.Screen name="[missing]" options={{
                 title: '404'

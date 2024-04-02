@@ -9,16 +9,14 @@ const lambda = new Lambda({
     secretAccessKey: process.env['AWS_SECRET_KEY'],
 });
 
-export const insertNewAccount = async (password: string, username: string): Promise<any> => {
+export const insertNewLocation = async (longitude: string, latitude: string, status: string, username: string): Promise<any> => {
     const params = {
-        FunctionName: 'PutItemNewAccountDynamoDB', // Update with your Lambda function name
+        FunctionName: 'InsertNewLocation', // Update with your Lambda function name
         Payload: JSON.stringify({
-             key1: username,
-             key2: password,
-
-            //Deleteme Used for testing
-            // key1: '',
-            // key2: "password",
+            key1: longitude,
+            key2: latitude,
+            key3: status,
+            key4: username,
         })
     }
     try {

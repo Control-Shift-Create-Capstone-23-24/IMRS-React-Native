@@ -6,7 +6,6 @@ interface LambdaPayload {
     password: string;
 }
 
-// for now hard code your accessKeyID and SecretAcessKey
 const lambda = new Lambda({
     region: 'us-west-2',
     accessKeyId: process.env['AWS_ACCESS_KEY'],
