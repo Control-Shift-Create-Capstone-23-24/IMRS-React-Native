@@ -1,6 +1,5 @@
 const { sortDataByName } = require("./objectsort");
 
-
 // Update the function to accept sortDataByName function as a parameter
 function updateUserLocation(data, sortFunction, name, newLatitude, newLongitude, status = "New") {
     // Check if the user exists in the data
@@ -14,10 +13,10 @@ function updateUserLocation(data, sortFunction, name, newLatitude, newLongitude,
         console.log(`Location updated for user '${name}'.`);
     } else {
         // Add the new user with their data
-        data[name] = [{ "latitude": newLatitude, "longitude": newLongitude, "status": status }];
+        data.push({"latitude": newLatitude, "longitude": newLongitude, "status": status, "user": name})
         console.log(`User '${name}' added with location (${newLatitude}, ${newLongitude}) and status '${status}'.`);
         
         // Sort the data by name after adding the new user
-        sortFunction(data);
+        sortDataByName(data);
     }
 }
