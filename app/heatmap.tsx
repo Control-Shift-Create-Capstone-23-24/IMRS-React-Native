@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Circle } from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Circle, Polyline, Polygon} from 'react-native-maps';
 import { useGetLocation } from "../hooks/useGetLocation";
 import ColorsOp from '../const/colorsOp';
 import {createDynamoDBTable} from "../fetch/createTableForGeoFence";
@@ -23,8 +23,8 @@ export const HeatMap = () => {
             setInitialPosition({
                 latitude: lat,
                 longitude: long,
-                latitudeDelta: 0.006,
-                longitudeDelta: 0.0016,
+                latitudeDelta: 0.060,
+                longitudeDelta: 0.0160,
             });
         }
 
@@ -78,6 +78,25 @@ export const HeatMap = () => {
                         strokeWidth={0}// Set this to 0 to remove the stroke border
                     />
                 ))}
+
+                <Polyline
+                    coordinates={[
+                        {latitude: 33.262133, longitude: -97.143094},
+                        {latitude: 33.245594, longitude: -97.143094},
+                        {latitude: 33.245594, longitude: -97.162048},
+                        {latitude: 33.262133, longitude: -97.162048},
+                        {latitude: 33.262133, longitude: -97.143094},
+                    ]}
+                    strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+                    strokeColors={[
+                        '#7F0000',
+                        '#B24112',
+                        '#E5845C',
+                        '#7F0000',
+                    ]}
+                    strokeWidth={6}
+                />
+
             </MapView>
         </View>
     );

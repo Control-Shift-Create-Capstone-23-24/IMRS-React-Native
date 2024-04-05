@@ -67,7 +67,7 @@ export default function Login() {
             if(role === 'dispatch') {
                 // redirect to dispatch/heatmap page
                 console.log('Redirecting to dispatch page')
-               setRedirectPath('http/heatmap')
+               setRedirectPath('heatmap')
             }
         })
         .catch(error => {
