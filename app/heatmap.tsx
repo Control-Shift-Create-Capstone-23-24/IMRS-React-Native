@@ -28,13 +28,23 @@ export const HeatMap = () => {
             });
         }
 
-        getHeatmap()
-            .then(coordinates => {
-                setPoints(coordinates);
-            })
-            .catch(error => {
+        const fetchHeatmapData = async () => {
+            try {
+                const coord = await getHeatmap();
+                setPoints(coord);
+            } catch (error) {
                 console.error('Error retrieving heatmap points:', error);
-            });
+            }
+        };
+
+        fetchHeatmapData();
+        // getHeatmap()
+        //     .then(coordinates => {
+        //         setPoints(coordinates);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error retrieving heatmap points:', error);
+        //     });
 
     }, [lat, long]);
 
