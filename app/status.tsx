@@ -1,49 +1,100 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Switch } from "react-native";
+import { Text, StyleSheet, View, Switch, Dimensions, Pressable } from "react-native";
 import ColorsOp from "../const/colorsOp";
 import RadiusSwitch from "../components/RadiusSwitch";
 
+const screenWidth = Dimensions.get('screen').width;
+const screenHeight = Dimensions.get('screen').height;
+const buttonWidth = screenWidth * .75;
+const buttonHeight = screenHeight * .06;
+
 const Status = () => {
     let shooterDescription:string = "White male, mid 30's, 5'10, 200lb, black shirt, blue jean, red cap" //temp
-    let shootingLocation:string = "Pleasnt Park"
+    let shootingLocation:string = "Pleasant Park"
+
+    const [currentStatus, setStatus] = useState('Clear');
+    const [statusColor, setStatusColor] = useState('#2aad2c');
+
+
+    const handleStatusChange = (status : number) => {
+        //console.log(status);
+        if(status == 0 ) {
+            setStatus('Clear');
+            setStatusColor('#2aad2c')
+        }
+        else if(status == 1) {
+            setStatus('Only Hear');
+            setStatusColor('#dbc70f');
+        }
+        else if(status == 2) {
+            setStatus('See and Hear');
+            setStatusColor('#db0f0f');
+        }
+        //console.log(currentStatus);
+        }
 
     const { 
+        // dupe description text, check styling
         container, 
         warningMsgText, 
         warningMsgWrapper,
         descriptionText,
         descriptionWrapper,
         locationText,
-        locationWrapper
+        locationWrapper,
+        titleContainer,
+        titleText,
+        currentStatusContainer,
+        currentStatusTitle,
+        currentStatusText,
+        statusSectionContainer,
+        statusContainer,
+        statusButton,
+        clearButton,
+        onlyHearButton,
+        seeAndHearButton,
+        buttonText
     } = styles
 
     return (
         <View style={container}>
             <View style={warningMsgWrapper}>
                 <Text style={warningMsgText}>Warning</Text>
-                <Text style={warningMsgText}>Active Shooter in your Area!</Text>
+                <Text style={warningMsgText}>Active Shooter in your Area</Text>
+            </View>
+            <View style={currentStatusContainer}>
+                <Text style={currentStatusTitle}>Your Reported Status</Text>
+                <Text style={[styles.currentStatusText, {color: statusColor}]}>{currentStatus}</Text>
             </View>
             <View style={descriptionWrapper}>
                 <Text style={descriptionText}>Description:</Text>
                 <Text style={descriptionText}>{shooterDescription}</Text>
             </View>
             <View style={locationWrapper}>
-                <Text style={locationText}>Location:</Text>
-                <Text style={locationText}>{shootingLocation}</Text>
+                <Text style={locationText}>Location: {shootingLocation}</Text>
             </View>
             <View>
-                <RadiusSwitch 
-                    backgroundColor= {ColorsOp.LG}
-                    text='I have Not Seen and I have Not Heard the shooter' 
-                />
-                <RadiusSwitch 
-                    backgroundColor='yellow' 
-                    text='I have Not Seen the shooter but I Can Hear the shooter'
-                />
-                <RadiusSwitch 
-                    backgroundColor= {ColorsOp.BR}
-                    text='I Can See or Have Seen the shooter and Can Hear the shooter'
-                />
+            <View style={statusContainer}>
+                    <View style={statusButton}>
+                        <Pressable onPress={() => handleStatusChange(0)} style={clearButton}>
+                            <Text style={buttonText}>Clear</Text>
+                        </Pressable>
+                    </View>
+                </View>
+                <View style={statusContainer}>
+                    <View style={statusButton}>
+                        <Pressable onPress={() => handleStatusChange(1)} style={onlyHearButton}>
+                            <Text style={buttonText}>Only Hear</Text>
+                        </Pressable>
+                    </View>
+                </View>
+                <View style={statusContainer}>
+                    <View style={statusButton}>
+                    <Pressable onPress={() => handleStatusChange(2)} style={seeAndHearButton}>
+                        <Text style={buttonText}>See and Hear</Text>
+                    </Pressable>
+                    </View>
+                </View>
             </View>
         </View>
     )
@@ -55,8 +106,7 @@ const styles = StyleSheet.create ({
         backgroundColor: ColorsOp.JB
     },
     warningMsgWrapper: {
-        paddingTop: 60,
-        paddingBottom: 40
+        marginTop: screenHeight * .02
     },
     warningMsgText: {
         color: ColorsOp.RO,
@@ -65,23 +115,89 @@ const styles = StyleSheet.create ({
         fontWeight: 'bold'
     },
     descriptionWrapper: {
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 40
-    },
-    descriptionText: {
-        color: ColorsOp.RO,
-        fontSize: 20
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: screenHeight * .02
     },
     locationWrapper: {
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 40
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: screenHeight * .02
     },
     locationText: {
         color: ColorsOp.RO,
         fontSize: 20,
         alignContent: 'flex-start'
+    },
+    titleContainer: {
+        alignItems: 'center',
+        paddingTop: screenHeight * 0.05
+    },
+    titleText: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        color: '#FFFFFF'
+    },
+    descriptionText: {
+        fontSize: 18,
+        color: '#FFFFFF'
+    },
+    currentStatusContainer: {
+        paddingTop: screenHeight * 0.025,
+        alignItems: 'center'
+    },
+    currentStatusTitle: {
+        fontSize: 25,
+        color: '#FFFFFF'
+    },
+    currentStatusText: {
+        fontSize: 30,
+        marginBottom: screenHeight * .09,
+    },
+    statusSectionContainer:  {
+        paddingTop: screenHeight * 0.05
+    },
+    statusContainer: {
+        paddingBottom: screenHeight * 0.05
+    },
+    statusButton: {
+        alignItems: 'center'
+    },
+    clearButton: {
+        
+        backgroundColor: '#2aad2c',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: buttonWidth,
+        minHeight: buttonHeight,
+        borderRadius: 20,
+        borderWidth: 2,
+        elevation: 3
+    },
+    onlyHearButton:{
+        backgroundColor: '#b8a70d',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: buttonWidth,
+        minHeight: buttonHeight,
+        borderRadius: 20,
+        borderWidth: 2,
+        elevation: 3
+    },
+    seeAndHearButton: {
+        backgroundColor: '#db0f0f',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: buttonWidth,
+        minHeight: buttonHeight,
+        borderRadius: 20,
+        borderWidth: 2,
+        elevation: 3,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 32
     }
 })
 
