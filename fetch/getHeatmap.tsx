@@ -8,6 +8,12 @@ const documentClient = new DynamoDB.DocumentClient({
     secretAccessKey: process.env['AWS_SECRET_KEY'],
 });
 
+interface Coordinates {
+    latitude: number;
+    longitude: number;
+    status: string;
+    user: string;
+}
 
 <<<<<<< HEAD
         dynamodb.scan(params, (err, data) => {
@@ -31,7 +37,7 @@ export async function getHeatmap() {
         TableName: 'Locations',
     };
 
-    let scanResults = [];
+    let scanResults:any = [];
     let items;
     do {
         items = await documentClient.scan(params).promise();
@@ -39,9 +45,9 @@ export async function getHeatmap() {
         params.ExclusiveStartKey = items.LastEvaluatedKey;
     } while (typeof items.LastEvaluatedKey != "undefined");
 
-    const coordinates = scanResults.map(item => ({
-        latitude: item.Latitude,
-        longitude: item.Longitude,
+    const coordinates: Coordinates[] = scanResults.map(item => ({
+        latitude: parseFloat(item.Latitude),
+        longitude: parseFloat(item.Longitude),
         status: item.Status,
         user: item.Username
     }));
