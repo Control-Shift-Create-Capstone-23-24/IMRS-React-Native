@@ -33,7 +33,7 @@ const RadiusSwitch = (props: any) => {
                 console.log('Fetched location:', currentLocation);
                 console.log(statusColor)
                 if(lat !== null || lon !== null) {
-                    insertNewLocation(lat.toString(), lon?.toString(), statusColor, 'NA')
+                    insertNewLocation(lat.toString(), lon.toString(), statusColor, 'NA')
                 }
                 // Account.user.getUserName()
                 // switchLocation(statusColor, lat, lon)

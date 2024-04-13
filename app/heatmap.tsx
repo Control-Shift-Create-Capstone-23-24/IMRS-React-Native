@@ -27,7 +27,19 @@ export const HeatMap = () => {
                 longitudeDelta: 0.0160,
             });
         }
+        const interval = setInterval(() => {
+            fetchLocation();
+            console.log('Check Loop')
+        }, 5000); 
+    
+        return () => {
+            clearInterval(interval);
+        };
+        
 
+    }, [lat, long]);
+
+    const fetchLocation = () => {
         getHeatmap()
             .then(coordinates => {
                 setPoints(coordinates);
@@ -35,8 +47,7 @@ export const HeatMap = () => {
             .catch(error => {
                 console.error('Error retrieving heatmap points:', error);
             });
-
-    }, [lat, long]);
+    }
 
     // Hard-coded coordinates for testing
     // const points = [
