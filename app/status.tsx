@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Text, StyleSheet, View, Switch, Dimensions, Pressable } from "react-native";
 import ColorsOp from "../const/colorsOp";
+import * as Location from 'expo-location';
+import { insertNewLocation } from "../fetch/insertNewLocation";
 import RadiusSwitch from "../components/RadiusSwitch";
 
 const screenWidth = Dimensions.get('screen').width;
@@ -14,9 +16,36 @@ const Status = () => {
 
     const [currentStatus, setStatus] = useState('Clear');
     const [statusColor, setStatusColor] = useState('#2aad2c');
+    const [lat, setLat] = useState<number | null>(null);
+    const [lon, setLon] = useState<number | null>(null);
 
+    const fetchLocation = async () => {
+        console.log("fetching location");
+        try {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                console.log('Permission Denied');
+                return;
+            }
+
+            const currentLocation = await Location.getCurrentPositionAsync({});
+            setLat(currentLocation.coords.latitude);
+            setLon(currentLocation.coords.longitude);
+            console.log('Fetched location:', currentLocation);
+            //console.log(statusColor)
+            if(lat !== null || lon !== null) {
+                insertNewLocation(lat.toString(), lon?.toString(), statusColor, 'NA')
+            }
+            // Account.user.getUserName()
+            // switchLocation(statusColor, lat, lon)
+        } catch (error) {
+            console.error('Error fetching location:', error);
+        }
+    };
 
     const handleStatusChange = (status : number) => {
+
+        
         //console.log(status);
         if(status == 0 ) {
             setStatus('Clear');
@@ -30,6 +59,8 @@ const Status = () => {
             setStatus('See and Hear');
             setStatusColor('#db0f0f');
         }
+
+        fetchLocation();
         //console.log(currentStatus);
         }
 
