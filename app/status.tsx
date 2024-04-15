@@ -35,6 +35,7 @@ const Status = () => {
             //console.log(statusColor)
             if(lat !== null || lon !== null) {
                 insertNewLocation(lat.toString(), lon.toString(), getStatusColor(statusColor), Account.user.getUserName())
+                // Account.user.getUserName()
             }
         } catch (error) {
             console.error('Error fetching location:', error);

@@ -27,6 +27,7 @@ export const HeatMap = () => {
                 longitudeDelta: 0.0160,
             });
         }
+        fetchLocation();
         const interval = setInterval(() => {
             fetchLocation();
             console.log('Check Loop')
