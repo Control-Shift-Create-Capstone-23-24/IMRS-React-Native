@@ -78,12 +78,14 @@ export default function Register() {
                     onChangeText={onChangePasswordField}
                     value={password}
                     placeholder='Password'
+                    secureTextEntry={true}
                 />
                 <TextInput
                     style={input}
                     onChangeText={onChangeConfirmPasswordField}
                     value={confirmPassword}
                     placeholder='Confirm Password'
+                    secureTextEntry={true}
                 />
             </View>
             <View style={registerButton}>
