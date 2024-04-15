@@ -18,8 +18,8 @@ export function getHeatmap() {
                 reject(err);
             } else {
                 const coordinates = data.Items.map(item => ({
-                    latitude: item.Longitude.N,
-                    longitude: item.Latitude.N,
+                    latitude: item.Latitude.N,
+                    longitude: item.Longitude.N,
                     status: item.Status.S,
                 }));
                 resolve(coordinates);
