@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, TextInput } from 'react-native'
+import { View, Text, Button, StyleSheet, TextInput, Dimensions } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 import ColorsOp from '../const/colorsOp'
@@ -13,7 +13,7 @@ export default function Register() {
     const [lastName, onChangeLastNameField] = React.useState('');
     const [email, onChangeEmailField] = React.useState('');
     const [school, onChangeSchoolField] = React.useState('');
-    
+
     const {
         container,
         pageTitle,
