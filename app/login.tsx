@@ -136,7 +136,12 @@ export default function Login() {
           <Link href="/status" asChild>
             <Button title="open Status page" />
           </Link>
-        </View> */}
+        </View> */
+        <View>
+          <Link href="/operator.tsx" asChild>
+            <Button title="open Status page" />
+          </Link>
+        </View>}
       </View>
     </View>
   );

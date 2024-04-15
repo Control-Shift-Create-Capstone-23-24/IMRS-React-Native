@@ -38,14 +38,14 @@ export default function LandingPage() {
                         <Text style={title}>IMRS</Text>
                     </View>
                     <View>
-                        <Text style={topText}>Incident Monitoring and Response System</Text>
+                        <Text style={topText}>Choose type of Registration</Text>
                     </View>
                     <View style={middleView}>
-                        <Link href={'/login'} asChild>
-                            <IMRS_Button title={'login'} color='white' backgroundColor= {ColorsOp.RO} />
+                        <Link href={'/register'} asChild>
+                            <IMRS_Button title={'Student'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
-                        <Link href={'/firstregister'} asChild>
-                            <IMRS_Button title={'register'} color='white' backgroundColor= {ColorsOp.RO} />
+                        <Link href={'/firstRegister'} asChild>
+                            <IMRS_Button title={'First Responder'} color='white' backgroundColor= {ColorsOp.RO} />
                         </Link>
                     </View>
                     <View style={bottomView}>

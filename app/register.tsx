@@ -86,12 +86,12 @@ export default function Register() {
             <View style={registerButton}>
                 <IMRS_Button title={'Register'} onPress={ handleRegister } color='white' backgroundColor='#FF5733' />
             </View>
-            <Link href='/modal' asChild>
+            {/* <Link href='/modal' asChild>
                 <Button title='open login modal' />
             </Link>
             <Link href='/firstregister' asChild>
                 <Button title='open Responder Register' />
-            </Link>
+            </Link> */}
         </View>
     )
 }
