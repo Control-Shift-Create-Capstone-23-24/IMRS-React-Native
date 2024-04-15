@@ -34,14 +34,27 @@ const Status = () => {
             console.log('Fetched location:', currentLocation);
             //console.log(statusColor)
             if(lat !== null || lon !== null) {
-                insertNewLocation(lat.toString(), lon?.toString(), statusColor, 'NA')
+                insertNewLocation(lat.toString(), lon.toString(), getStatusColor(statusColor), Account.user.getUserName())
             }
-            // Account.user.getUserName()
-            // switchLocation(statusColor, lat, lon)
         } catch (error) {
             console.error('Error fetching location:', error);
         }
     };
+
+    const getStatusColor = (color: string) => {
+        if(color === '#2aad2c'){
+            return 'Green'
+        }
+        else if(color === '#dbc70f'){
+            return 'Yellow'
+        }
+        else if(color === '#db0f0f'){
+            return 'Red'
+        }
+        else{
+            return 'Grey'
+        }
+    }
 
     const handleStatusChange = (status : number) => {
 
