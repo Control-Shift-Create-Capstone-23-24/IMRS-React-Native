@@ -3,7 +3,8 @@
 ***
 # Description
 ***
-Description goes here
+Incident Monitoring and Response System (IMRS) is a communications platform designed to decrease response time while increasing survivability through smart phone applications by collecting, analyzing, and organizing crowdsourced data from the active shooter site and providing it to first responders in the form of a geographical heat signature.
+
 
 # Installation
 
