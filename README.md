@@ -1,99 +1,50 @@
+# LifeShield: Active Shooter Alert & Response App
 
-# IMRS-React-Native
-***
-# Description
-***
-Description goes here
+<img src="./img/landingpage.png" alt="Logo" width="198" height="352">
 
-# Installation
-
-## Windows
-***
-Install Android Stuido
-```bash
-winget install -e --id Google.AndroidStudio
-```
-Launch Android Studio and update to the latest version.
-
-In the Main Menu under Tools open the Device Manager and Create a Virtual Device (make sure it's a phone). Select an image that's on Android version 14
-
-Remember to open Android Studio and start your Virtual Machine whenever you want to run IMRS on Android.
-
-
-Create a [gihub personal acccess token](https://github.com/settings/tokens/new?description=IMRS%20GitHub%20plugin&scopes=repo%2Cgist%2Cread%3Aorg%2Cworkflow%2Cread%3Auser%2Cuser%3Aemail) (if needed) then clone the repository with one of the following for http and ssh respectively.
-
-http
-
-```bash
-git clone https://github.com/Control-Shift-Create-Capstone-23-24/IMRS-React-Native.git
-```
-
-ssh
-
-```bash
-git clone git@github.com:Control-Shift-Create-Capstone-23-24/IMRS-React-Native.git
-```
-
-Inside the project directory, install npm packages
-
-```bash
-npm install
-```
-
-Add the Google Maps API Key. Instructions can be found in the "Google Maps API" Key section below.
-
-## Mac
-***
-## Google Maps API Key
 ***
 
-For a Google Maps api key (if needed). [Create an account](https://developers.google.com/maps/documentation/) then generate a Google Maps api key
+The purpose of the document is to explain how the IMRS application will run, and how to run it on your own device. IMRS is an application meant to assist first responders in a school shooter situation. It will allow users to display their statuses on a heat map that will be shown to first responders. F.R. 's can use this information to determine the general location of the shooter in the building, and allow them to subdue the threat quickly and save as many lives as possible.
 
-### IOS (mac only)
+***
 
-To set up maps for IOS, edit the ./ios/reactNative/AppDelegate.mm file as with the following lines (the ones with pluses at the start of the line)
+## Key Features
 
-```diff
-+ #import <GoogleMaps/GoogleMaps.h>
+- **Real-Time Heat Maps:** Visualize hotspots where danger is most concentrated using heat maps updated in real-time.
+- **Immediate Alerts:** Receive instant notifications if an active shooter is reported near you.
+- **Safety Navigation:** Guided navigation to the nearest exits or designated safe zones.
+- **Emergency Contacts:** Quick access to contact emergency services or notify loved ones of your status.
 
-@implementation AppDelegate
-...
+## App Screenshots
 
-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-+  [GMSServices provideAPIKey:@"_YOUR_API_KEY_"]; // add this line using the api key obtained from Google Console
-...
-```
+Here are two screenshots demonstrating the functionality of LifeShield in an active simulation:
 
-Edit the Podfile found at ./ios/reactIMRS/Podfile and add the following above the `use_native_modules!` function then run `pod install`.
+<img src="./img/heatmap.png" alt="Logo" width="198" height="352">
 
-```diff
-rn_maps_path = '../node_modules/react-native-maps'
-pod 'react-native-google-maps', :path => rn_maps_path
-```
+## Installation
 
+To install LifeShield, download it from the Google Play Store or Apple App Store:
 
-### Android
+- [Google Play Store](link_to_google_play)
+- [Apple App Store](link_to_apple_store)
 
-Run to generate the android directory.
+## Usage
 
-```bash
-npx expo run:android
-```
+After installation, open the app and allow necessary permissions for location and notifications to ensure full functionality.
 
-Add the Google Map API Key to your AndroidManifest.xml file found at android/app/src/main/AndroidManifest.xml. Add your API Key to the file.
+## Support
 
-```diff
-<application>
-   <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
-   <meta-data
-     android:name="com.google.android.geo.API_KEY"
-     android:value="Your Google maps API Key Here"/>
-</application>
-```
+For support, contact us at [support@lifeshieldapp.com](mailto:support@lifeshieldapp.com).
 
+## Contributing
 
+We welcome contributions from the community. Please visit our [GitHub repository](link_to_github) for more details on how you can contribute.
 
-For a more detailed explanation look [here](https://github.com/react-native-maps/react-native-maps/blob/master/docs/installation.md).
+## License
 
+This software is licensed under the MIT License. See the LICENSE file for more details.
+
+---
+
+*LifeShield - Protecting lives, one alert at a time.*
 
