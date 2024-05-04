@@ -12,7 +12,7 @@ const lambda = new Lambda({
 
 export const insertNewLocation = async (latitude: string, longitude: string, status: string, username: string): Promise<any> => {
     const params = {
-        FunctionName: 'InsertNewLocation', // Update with your Lambda function name
+        FunctionName: 'updateUserStatus', // Update with your Lambda function name
         Payload: JSON.stringify({
             key1: latitude,
             key2: longitude,

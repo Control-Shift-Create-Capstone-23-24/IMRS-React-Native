@@ -39,7 +39,31 @@ const HeatMap = () => {
             //     clearInterval(interval);
             // };
         }
+<<<<<<< HEAD
     }, [lat, long]);
+=======
+        const interval = setInterval(() => {
+            fetchLocation();
+            console.log('Check Loop')
+        }, 5000); 
+    
+        return () => {
+            clearInterval(interval);
+        };
+        
+
+    }, [lat, long]);
+
+    const fetchLocation = () => {
+        getHeatmap()
+            .then(coordinates => {
+                setPoints(coordinates);
+            })
+            .catch(error => {
+                console.error('Error retrieving heatmap points:', error);
+            });
+    }
+>>>>>>> 7346363 (looped the catch)
 
     const fetchHeatmapData = async () => {
         try {
