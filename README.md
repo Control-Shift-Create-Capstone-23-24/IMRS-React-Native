@@ -15,15 +15,34 @@ The purpose of the document is to explain how the IMRS application will run, and
 - **Safety Navigation:** Guided navigation to the nearest exits or designated safe zones.
 - **Emergency Contacts:** Quick access to contact emergency services or notify loved ones of your status.
 
-## App Screenshots
-
-Here are two screenshots demonstrating the functionality of LifeShield in an active simulation:
 
 <img src="./img/heatmap.png" alt="Logo" width="198" height="352">
 
-## Installation
+## Build Setup
 
-To install LifeShield, download it from the Google Play Store or Apple App Store:
+### MacOS
+
+1. Clone then cd in to the project.
+2. Cd in to the ios directory and run `pod install`.
+3. In appdeligate.mm add the following code as specified below ``[GMSServices provideAPIKey:@"_YOUR_API_KEY_"]; // add this line using the api key obtained from Google Console``.
+```
++ #import <GoogleMaps/GoogleMaps.h>
+
+@implementation AppDelegate
+...
+
+(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
++  [GMSServices provideAPIKey:@"_YOUR_API_KEY_"]; // add this line using the api key obtained from Google Console
+...
+```
+4. Cd in to the ios dir and run ``pod install``.
+5. Cd in to the project root and run ``npm install``.
+6. Run the project with ``npx expo start``.
+
+Note: You will need to select either IOS with "i" or Android with "a" or Web with "w" after running the project.
+
+***
 
 - [Google Play Store](link_to_google_play)
 - [Apple App Store](link_to_apple_store)
