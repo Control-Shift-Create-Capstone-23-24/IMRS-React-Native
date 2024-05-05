@@ -1,15 +1,6 @@
 # LifeShield: Active Shooter Alert & Response App
 
-<<<<<<< HEAD
-# IMRS-React-Native
-***
-# Description
-***
-Incident Monitoring and Response System (IMRS) is a communications platform designed to decrease response time while increasing survivability through smart phone applications by collecting, analyzing, and organizing crowdsourced data from the active shooter site and providing it to first responders in the form of a geographical heat signature.
-
-=======
 <img src="./img/landingpage.png" alt="Logo" width="198" height="352">
->>>>>>> de016ca (Basic layout of new readme)
 
 ***
 
