@@ -1,4 +1,5 @@
-# LifeShield: Active Shooter Alert & Response App
+# IMRS: INCIDENT MONITORING  AND RESPONSE SYSTEM
+
 
 <img src="./img/landingpage.png" alt="Logo" width="198" height="352">
 
