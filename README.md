@@ -24,7 +24,7 @@ The purpose of the document is to explain how the IMRS application will run, and
 
 1. Clone then cd in to the project.
 2. Cd in to the ios directory and run `pod install`.
-3. In appdeligate.mm add the following code as specified below ``[GMSServices provideAPIKey:@"_YOUR_API_KEY_"]; // add this line using the api key obtained from Google Console``.
+3. In appdeligate.mm file add the following code as shown below ``[GMSServices provideAPIKey:@"_YOUR_API_KEY_"]; // add this line using the api key obtained from Google Console``.
 ```
 + #import <GoogleMaps/GoogleMaps.h>
 
@@ -40,30 +40,25 @@ The purpose of the document is to explain how the IMRS application will run, and
 5. Cd in to the project root and run ``npm install``.
 6. Run the project with ``npx expo start``.
 
-Note: You will need to select either IOS with "i" or Android with "a" or Web with "w" after running the project.
+Note: You will need to select either IOS with "i" or Android with "a" or Web with "w" in the terminal after running the project.
 
 ***
 
+*Currently not available on any App Store.*
 - [Google Play Store](link_to_google_play)
 - [Apple App Store](link_to_apple_store)
 
 ## Usage
 
-After installation, open the app and allow necessary permissions for location and notifications to ensure full functionality.
+### Student/Teacher
+Students and faculty will be trained how to use the app in advance.
+When a Geofence is activated on the app, they will be able to communicate their status of eirther "Cant see,
+Cant hear," "Cant see, Can hear," "Cant see, Cant hear" the active shooter.
+This gives valuable data to help first responses locate the shooter faster. 
 
-## Support
-
-For support, contact us at [support@lifeshieldapp.com](mailto:support@lifeshieldapp.com).
-
-## Contributing
-
-We welcome contributions from the community. Please visit our [GitHub repository](link_to_github) for more details on how you can contribute.
-
-## License
-
-This software is licensed under the MIT License. See the LICENSE file for more details.
+### First Responders
+First responders will be able to see the heat map of the building, and the status of the students and faculty. The heat map will show the general location of the shooter to help them determine the best course of action to take.
 
 ---
 
-*LifeShield - Protecting lives, one alert at a time.*
 
