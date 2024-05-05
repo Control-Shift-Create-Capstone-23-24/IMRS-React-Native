@@ -15,23 +15,6 @@ interface Coordinates {
     user: string;
 }
 
-<<<<<<< HEAD
-        dynamodb.scan(params, (err, data) => {
-            if (err) {
-                console.error('Unable to scan the table:', err);
-                reject(err);
-            } else {
-                const coordinates = data.Items.map(item => ({
-                    latitude: item.Latitude.N,
-                    longitude: item.Longitude.N,
-                    status: item.Status.S,
-                }));
-                resolve(coordinates);
-                console.log(coordinates)
-            }
-        });
-    });
-=======
 export async function getHeatmap() {
     let params = {
         TableName: 'Locations',
@@ -54,5 +37,4 @@ export async function getHeatmap() {
 
     console.log("From scan: ", coordinates);
     return coordinates;
->>>>>>> 10c87ae (test crashing app)
 }
