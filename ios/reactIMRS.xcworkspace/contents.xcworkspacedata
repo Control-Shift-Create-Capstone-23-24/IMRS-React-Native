@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:reactIMRS.xcodeproj">
+      location = "group:/Users/bryceellinger/dev/capstone/IMRS-React-Native/ios/IMRS.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

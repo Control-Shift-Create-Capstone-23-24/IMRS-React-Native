@@ -18,7 +18,7 @@
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "reactIMRS.app"
                BlueprintName = "reactIMRS"
-               ReferencedContainer = "container:reactIMRS.xcodeproj">
+               ReferencedContainer = "container:IMRS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "reactIMRS.app"
             BlueprintName = "reactIMRS"
-            ReferencedContainer = "container:reactIMRS.xcodeproj">
+            ReferencedContainer = "container:IMRS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "reactIMRS.app"
             BlueprintName = "reactIMRS"
-            ReferencedContainer = "container:reactIMRS.xcodeproj">
+            ReferencedContainer = "container:IMRS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
