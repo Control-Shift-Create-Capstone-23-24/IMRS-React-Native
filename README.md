@@ -40,10 +40,8 @@ IMRS is designed to assist first responders in school shooter situations by disp
       ```
     - Inside the project directory, run `npm install`.
 
-## App Availability
-*Not currently available on any App Store.*
-- [Google Play Store](link_to_google_play)
-- [Apple App Store](link_to_apple_store)
+
+** Note: There are still issues with setting up on Windows, so chose MacOS if you're having issues. **
 
 ## Usage
 
