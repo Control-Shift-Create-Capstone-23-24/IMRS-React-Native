@@ -345,6 +345,7 @@
 			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-reactIMRS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = reactIMRS/reactIMRS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -391,6 +392,7 @@
 			baseConfigurationReference = 7A4D352CD337FB3A3BF06240 /* Pods-reactIMRS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = reactIMRS/reactIMRS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
