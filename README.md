@@ -21,8 +21,19 @@ IMRS is designed to assist first responders in school shooter situations by disp
           ...
       }
       ```
-    - Navigate back to the project root and run `npm install`.
-    - Start the project with `npx expo start`, choose 'i' for iOS.
+    - Also make sure that your Podfile deployment target is set to >= 13.4 at the top of your Podfile, eg:
+   
+   ``platform :ios, '13.4'
+      ``
+  - Add the following to your Podfile above the use_native_modules! function and run pod install in the ios folder:
+
+```Podfile
+rn_maps_path = '../node_modules/react-native-maps'
+pod 'react-native-google-maps', :path => rn_maps_path# React Native Maps dependencies
+```
+
+  - Navigate back to the project root and run `npm install`.
+  - Start the project with `npx expo start`, choose 'i' for iOS.
 
 ### Windows
 1. **Android Studio Setup:**
